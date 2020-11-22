@@ -69,8 +69,13 @@ GPU
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
 utilities 'util'
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
-0-5-0: 'buildmemdirections256'
-    0-0: 'runbuildmemdirections256'
+0-5-0: 
+    0 'buildmemdirections256':
+        0: 'runbuildmemdirections256'
+        1: 'add'
+        2: 'memdirptrallequalsresult'
+        3: 'memdirptrallnextdir'
+        4: 'op1equalsresult'
 
 ******************************************************
 mcfunction index
@@ -112,9 +117,9 @@ register manipulation 'regmanipulation'
     op1 <- op2 DONE
     op2 <- op1 DONE
     op1 <- result DONE
-    op2 <- result TODO
-    bit-lvl ptr to begin TODO
-
+    op2 <- result DONE
+    bit-lvl ptr to begin BUG # Caused some functions to be ignored. has been removed.
+    
 
 Memory 'mem'
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
