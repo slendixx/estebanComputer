@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Armor Stand Maker</title>
+  </head>
+  <body>
+    <div>
+      <h2>Enter UUID Value:</h2>
+      <label for=""
+        >First field <input type="number" id="first" disabled value="0"
+      /></label>
+      <label for=""
+        >Second field: <input type="number" id="second" value="0"
+      /></label>
+      <label for=""
+        >Third field: <input type="number" id="third" value="0"
+      /></label>
+      <label for=""
+        >Forth field: <input type="number" id="forth" value="0"
+      /></label>
+      <label for=""
+        >Fifth field: <input type="number" id="fifth" value="1"
+      /></label>
+    </div>
+    <div>
+      <h2>Enter coordinates</h2>
+      <label for="">x: <input type="number" id="x" value="0" /></label>
+      <label for="">y: <input type="number" id="y" value="0" /></label>
+      <label for="">z: <input type="number" id="z" value="0" /></label>
+    </div>
+    <!-- <div>
+      <h2>Options</h2>
+    </div> -->
+    <button id="summon">Generate summon command</button>
+    <textarea name="" id="result" cols="50" rows="3"></textarea>
+    <button id="copy">Copy to clipboard</button>
+    <script src="script.js"></script>
+  </body>
+</html>
