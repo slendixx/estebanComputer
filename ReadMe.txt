@@ -25,10 +25,10 @@ CU
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
 ALU
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
-0-2-0: operands
-    0-0: bit-lvl pointer
-    0-1: bit-lvl pointer start pos
-    0-2: bit-lvl pointer end pos
+0-2-0: registers
+    0-0: bit-lvl register pointer
+    0-1: bit-lvl register pointer start pos
+    0-2: bit-lvl register pointer end pos
 
     1 'add':
         0: 'runadd'
@@ -43,12 +43,34 @@ ALU
         0: 'runop2equalsop1'
     d 'op1equalsresult':
         0: 'runop1equalsresult'
-    e 'op2equalsresult'
+    e 'op2equalsresult':
+        0: 'runop2equalsresult'
+    f 'op1equalsresult':
+        0: 'runop1equalsresult'
+    10 'op2equalsresult:
         0: 'runop2equalsresult'
 Memory
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
+0-3-0: registers
+    0: bank 0 pointers
+        0: dir pointer 0
+        1: dir pointer 0 start pos
+    1: bank 1 pointers
+            0: dir pointer 1
+            1: dir pointer 1 start pos
+    2: bank 2 pointers
+            0: dir pointer 2
+            1: dir pointer 2 start pos
+    3: bank 3 pointers
+            0: dir pointer 3
+            1: dir pointer 3 start pos
+
 GPU
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
+utilities 'util'
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
+0-5-0: 'buildmemdirections256'
+    0-0: 'runbuildmemdirections256'
 
 ******************************************************
 mcfunction index
@@ -89,7 +111,7 @@ register manipulation 'regmanipulation'
     step backward 'stepbw' DONE
     op1 <- op2 DONE
     op2 <- op1 DONE
-    op1 <- result TODO
+    op1 <- result DONE
     op2 <- result TODO
     bit-lvl ptr to begin TODO
 
@@ -100,7 +122,9 @@ GPU 'gpu'
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
 utilities 'util'
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
+DONE
 init AS 'initas'
+TODO
 build 512 memory directions  'buildmemdirections512':
     builds 512 memory directions
 
