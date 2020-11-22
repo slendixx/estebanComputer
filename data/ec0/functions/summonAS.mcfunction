@@ -1,0 +1,1 @@
+summon minecraft:armor_stand ~ ~ ~ {UUIDMost:0l,UUIDLeast:2l,CustomName:"\"0-0-0-0-2\"",CustomNameVisible:true,NoGravity:true}
