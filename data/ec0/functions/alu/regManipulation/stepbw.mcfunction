@@ -1,0 +1,1 @@
+execute at 0-2-0-0-0 as 0-2-0-0-0 run tp @s ~-1 ~ ~

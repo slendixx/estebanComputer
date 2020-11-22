@@ -30,61 +30,39 @@ ALU
     0-1: bit-lvl pointer start pos
     0-2: bit-lvl pointer end pos
 
+    1 'add':
+        0: 'runadd'
 
-    
+    2 'sub':
+        0: 'runsub'
+
+    b 'op1equalsop2':
+        0: 'runop1equalsop2'
+
+    c 'op2equalsop1':       
+        0: 'runop2equalsop1'
+    d 'op1equalsresult':
+        0: 'runop1equalsresult'
+    e 'op2equalsresult'
+        0: 'runop2equalsresult'
 Memory
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
 GPU
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
 
 ******************************************************
-function index
+mcfunction index
 ******************************************************
 
 system bus 'bus'
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
 CU 'cu'
-¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
-    ·Arithmetic & logic instructions:
-        add
-        sub
-        mul
-        div
-        rshift
-        lshift
-        abs
-        or
-        and
-        not
-    ·data transfer instructions:
-        st
-        ld
-    ·branch instructions:
-        call
-        jumpl
-        ba
-        be
-        bo
-        bneg
-    ·I/O:
-        read number 'rn'
-        read char 'rc'
-        read string 'rs'
-        print string 'ps'
-        print number 'ps'
-        
-        some other graphic instruction
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
 
 ALU 'alu'
-¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
-step forward 'stepfw'
-step backward 'stepbw'
-op1 <- op2
-op2 <- op1
-op1 <- result
-op2 <- result
-bit-lvl ptr to begin
-addition 'add'
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
+addition 'add' DONE
+    runadd
     add000
     add001
     add010
@@ -93,9 +71,27 @@ addition 'add'
     add101
     add110
     add111
-subtraction 'sub'
+
+TODO
+subtraction 'sub' 
 multiplication 'mul'
 division 'div'
+rshift
+lshift
+abs
+or
+and
+not
+
+TODO
+register manipulation 'regmanipulation' 
+    step forward 'stepfw' DONE
+    step backward 'stepbw' DONE
+    op1 <- op2 DONE
+    op2 <- op1 DONE
+    op1 <- result TODO
+    op2 <- result TODO
+    bit-lvl ptr to begin TODO
 
 
 Memory 'mem'
@@ -133,6 +129,37 @@ instruction formats
         print string 'ps'
         print number 'ps'
         
+        some other graphic instruction/s
+
+******************************************************
+instruction set
+******************************************************
+·Arithmetic & logic instructions:
+        add
+        sub
+        mul
+        div
+        rshift
+        lshift
+        abs
+        or
+        and
+        not
+    ·data transfer instructions:
+        st
+        ld
+    ·branch instructions:
+        call
+        jumpl
+        ba
+        be
+        bo
+        bneg
+    ·I/O:
+        read number 'rn'
+        read char 'rc'
+        read string 'rs'
+        print string 'ps'
+        print number 'ps'
+        
         some other graphic instruction
-
-
