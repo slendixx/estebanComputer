@@ -1,1 +1,1 @@
-execute at 0-2-0-c-0 run setblock ~ ~-1 ~ redstone_block
+execute at 0-2-0-c-0 run setblock ~ ~-1 ~ redstone_block destroy
