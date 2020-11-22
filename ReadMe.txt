@@ -192,3 +192,21 @@ instruction set
         print number 'ps'
         
         some other graphic instruction
+
+******************************************************
+microprogram format
+******************************************************
+
+    ·single mcfunction microprogram called from command block: 
+        create an mcfunction for the actual microprogram and a runner with name 'run' + mcfunctionName.mcfunction
+
+    ·single mcfunction microprogram called from mcfunction:
+        simply create an mcfunction
+
+    ·multi-mcfunction microprogram: 
+        create a subdir with the microprogram name. inside place a runner with its respective mcfunction &
+        all the required mcfunctions.
+        all the runner does is link to the next mcfunction.
+        mcfunction linking is done by placing a redstone_block under the AS that represents the next mcfunction in the sequence & a
+        stone block under AS of the mcfunction that has just finished execution.
+
