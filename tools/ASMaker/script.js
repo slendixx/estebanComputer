@@ -1,23 +1,30 @@
 "use strict";
 
 function generateSummon() {
-  let UUIDMost = second.value > 0 ? second.value + 16 ** 4 : 0;
-  UUIDMost += third.value;
-  UUIDMost = Number(UUIDMost);
-  let UUIDLeast = forth.value > 0 ? forth.value + 16 ** 13 : 0;
-  UUIDLeast += fifth.value;
-  UUIDLeast = Number(UUIDLeast);
+  let field1 = first.value;
+  let field2 = second.value;
+  let field3 = third.value;
+  let field4 = forth.value;
+  let field5 = fifth.value;
 
-  const UUIDMostHex = UUIDMost.toString(16);
-  const UUIDLeastHex = UUIDLeast.toString(16);
+  field1 = Number(field1);
+  field2 = Number(field2);
+  field3 = Number(field3);
+  field4 = Number(field4);
+  field5 = Number(field5);
+
+  let UUIDMost = field2 > 0 ? field2 * secondFieldFiller : 0;
+  UUIDMost += field3;
+  let UUIDLeast = field4 > 0 ? field4 * forthFieldFiller : 0;
+  UUIDLeast += field5;
 
   const command = `summon minecraft:armor_stand ${x.value} ${y.value} ${
     z.value
-  } {UUIDMost:${UUIDMostHex}l,UUIDLeast:${UUIDLeast}l,NoGravity:true,CustomName:"\\"${0}-${second.value.toString(
+  } {UUIDMost:${UUIDMost}l,UUIDLeast:${UUIDLeast}l,NoGravity:true,CustomName:"\\"${0}-${field2.toString(
     16
-  )}-${third.value.toString(16)}-${forth.value.toString(
+  )}-${field3.toString(16)}-${field4.toString(16)}-${field5.toString(
     16
-  )}-${fifth.value.toString(16)}\\"",CustomNameVisible:true}`;
+  )}\\"",CustomNameVisible:true}`;
 
   result.textContent = command;
 }
@@ -39,6 +46,9 @@ const z = document.getElementById("z");
 const btnGenerateSummon = document.getElementById("summon");
 const result = document.getElementById("result");
 const btnCopy = document.getElementById("copy");
+
+const secondFieldFiller = 65536;
+const forthFieldFiller = 281474976710656;
 
 btnGenerateSummon.addEventListener("click", generateSummon);
 btnCopy.addEventListener("click", copyCommand);
