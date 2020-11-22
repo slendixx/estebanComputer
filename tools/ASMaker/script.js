@@ -13,6 +13,12 @@ function generateSummon() {
   field4 = Number(field4);
   field5 = Number(field5);
 
+  firstHex.value = field1.toString(16);
+  secondHex.value = field2.toString(16);
+  thirdHex.value = field3.toString(16);
+  forthHex.value = field4.toString(16);
+  fifthHex.value = field5.toString(16);
+
   let UUIDMost = field2 > 0 ? field2 * secondFieldFiller : 0;
   UUIDMost += field3;
   let UUIDLeast = field4 > 0 ? field4 * forthFieldFiller : 0;
@@ -40,6 +46,12 @@ const second = document.getElementById("second");
 const third = document.getElementById("third");
 const forth = document.getElementById("forth");
 const fifth = document.getElementById("fifth");
+const firstHex = document.getElementById("firstHex");
+const secondHex = document.getElementById("secondHex");
+const thirdHex = document.getElementById("thirdHex");
+const forthHex = document.getElementById("forthHex");
+const fifthHex = document.getElementById("fifthHex");
+
 const x = document.getElementById("x");
 const y = document.getElementById("y");
 const z = document.getElementById("z");

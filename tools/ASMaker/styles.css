@@ -6,6 +6,6 @@
 }
 
 label {
-  display: block;
+  display: inline-block;
   margin: 10px;
 }
