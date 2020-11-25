@@ -28,18 +28,34 @@ ALU
 0-2-0: registers
     0-0: bit-lvl register pointer
     0-1: bit-lvl register pointer start pos
-    0-2: bit-lvl register pointer end pos
+    0-2: bit-lvl mul result pointer
+    0-3: bit-lvl mul result pointer position 
+    0-4: bit-lvl mul result pointer start pos
+    0-5: bit.lvl temporal register 0 pointer
+    0-6: bit.lvl temporal register 0 pointer start pos
+    0-7: bit.lvl temporal register 1 pointer
+    0-8: bit.lvl temporal register 1 pointer start pos
+    0-9: bit.lvl temporal register 2 pointer
+    0-a: bit.lvl temporal register 2 pointer start pos
+    0-b: bit.lvl temporal register 3 pointer
+    0-c: bit.lvl temporal register 3 pointer start pos
 
     1 'add':
         0: 'add'
         1: 'clearcarry'
 
     2 'sub':
-        1: 'lookforfirst1'
-        2: 'c2'
+        0: 'lookforfirst1'
+        1: 'c2'
         2: 'add'
         3: 'clearcarry'
 
+    3 'mul':
+        0: 'mul'
+        1: 'addmulresult'
+        2: 'stepmulresultptrs'
+        3: 'clearcarry'
+        4: 'testformulend'
 
     b 'op1equalsop2':
         0: 'runop1equalsop2'

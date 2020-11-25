@@ -3,6 +3,19 @@
 # ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
 summon minecraft:armor_stand 22 5 6 {UUIDMost:131072l,UUIDLeast:0l,NoGravity:true,CustomName:"\"0-2-0-0-0\"",CustomNameVisible:true}
 summon minecraft:armor_stand 22 5 6 {UUIDMost:131072l,UUIDLeast:1l,NoGravity:true,CustomName:"\"0-2-0-0-1\"",CustomNameVisible:true}
+summon minecraft:armor_stand 22 5 9 {UUIDMost:131072l,UUIDLeast:2l,NoGravity:true,CustomName:"\"0-2-0-0-2\"",CustomNameVisible:true}
+summon minecraft:armor_stand 22 5 9 {UUIDMost:131072l,UUIDLeast:3l,NoGravity:true,CustomName:"\"0-2-0-0-3\"",CustomNameVisible:true}
+summon minecraft:armor_stand 22 5 9 {UUIDMost:131072l,UUIDLeast:4l,NoGravity:true,CustomName:"\"0-2-0-0-4\"",CustomNameVisible:true}
+
+summon minecraft:armor_stand 22 5 11 {UUIDMost:131072l,UUIDLeast:5l,NoGravity:true,CustomName:"\"0-2-0-0-5\"",CustomNameVisible:true}
+summon minecraft:armor_stand 22 5 11 {UUIDMost:131072l,UUIDLeast:6l,NoGravity:true,CustomName:"\"0-2-0-0-6\"",CustomNameVisible:true}
+summon minecraft:armor_stand 22 5 12 {UUIDMost:131072l,UUIDLeast:7l,NoGravity:true,CustomName:"\"0-2-0-0-7\"",CustomNameVisible:true}
+summon minecraft:armor_stand 22 5 12 {UUIDMost:131072l,UUIDLeast:8l,NoGravity:true,CustomName:"\"0-2-0-0-8\"",CustomNameVisible:true}
+summon minecraft:armor_stand 22 5 13 {UUIDMost:131072l,UUIDLeast:9l,NoGravity:true,CustomName:"\"0-2-0-0-9\"",CustomNameVisible:true}
+summon minecraft:armor_stand 22 5 13 {UUIDMost:131072l,UUIDLeast:10l,NoGravity:true,CustomName:"\"0-2-0-0-a\"",CustomNameVisible:true}
+summon minecraft:armor_stand 22 5 14 {UUIDMost:131072l,UUIDLeast:11l,NoGravity:true,CustomName:"\"0-2-0-0-b\"",CustomNameVisible:true}
+summon minecraft:armor_stand 22 5 14 {UUIDMost:131072l,UUIDLeast:12l,NoGravity:true,CustomName:"\"0-2-0-0-c\"",CustomNameVisible:true}
+
 summon minecraft:armor_stand 22 5 -1 {UUIDMost:131072l,UUIDLeast:281474976710656l,NoGravity:true,CustomName:"\"0-2-0-1-0\"",CustomNameVisible:true}
 summon minecraft:armor_stand 19 5 -1 {UUIDMost:131072l,UUIDLeast:281474976710657l,NoGravity:true,CustomName:"\"0-2-0-1-1\"",CustomNameVisible:true}
 
@@ -10,6 +23,12 @@ summon minecraft:armor_stand 22 5 -2 {UUIDMost:131072l,UUIDLeast:562949953421312
 summon minecraft:armor_stand 19 5 -2 {UUIDMost:131072l,UUIDLeast:562949953421313l,NoGravity:true,CustomName:"\"0-2-0-2-1\"",CustomNameVisible:true}
 summon minecraft:armor_stand 16 5 -2 {UUIDMost:131072l,UUIDLeast:562949953421314l,NoGravity:true,CustomName:"\"0-2-0-2-2\"",CustomNameVisible:true}
 summon minecraft:armor_stand 13 5 -2 {UUIDMost:131072l,UUIDLeast:562949953421315l,NoGravity:true,CustomName:"\"0-2-0-2-3\"",CustomNameVisible:true}
+
+summon minecraft:armor_stand 22 5 -3 {UUIDMost:131072l,UUIDLeast:844424930131968l,NoGravity:true,CustomName:"\"0-2-0-3-0\"",CustomNameVisible:true}
+summon minecraft:armor_stand 19 5 -3 {UUIDMost:131072l,UUIDLeast:844424930131969l,NoGravity:true,CustomName:"\"0-2-0-3-1\"",CustomNameVisible:true}
+summon minecraft:armor_stand 16 5 -3 {UUIDMost:131072l,UUIDLeast:844424930131970l,NoGravity:true,CustomName:"\"0-2-0-3-2\"",CustomNameVisible:true}
+summon minecraft:armor_stand 13 5 -3 {UUIDMost:131072l,UUIDLeast:844424930131971l,NoGravity:true,CustomName:"\"0-2-0-3-3\"",CustomNameVisible:true}
+summon minecraft:armor_stand 10 5 -3 {UUIDMost:131072l,UUIDLeast:844424930131972l,NoGravity:true,CustomName:"\"0-2-0-3-4\"",CustomNameVisible:true}
 
 summon minecraft:armor_stand 22 5 -11 {UUIDMost:131072l,UUIDLeast:3096224743817216l,NoGravity:true,CustomName:"\"0-2-0-b-0\"",CustomNameVisible:true}
 summon minecraft:armor_stand 22 5 -12 {UUIDMost:131072l,UUIDLeast:3377699720527872l,NoGravity:true,CustomName:"\"0-2-0-c-0\"",CustomNameVisible:true}
