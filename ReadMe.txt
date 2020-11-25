@@ -31,24 +31,38 @@ ALU
     0-2: bit-lvl register pointer end pos
 
     1 'add':
-        0: 'runadd'
+        0: 'add'
+        1: 'clearcarry'
 
     2 'sub':
-        0: 'runsub'
+        1: 'lookforfirst1'
+        2: 'c2'
+        2: 'add'
+        3: 'clearcarry'
+
 
     b 'op1equalsop2':
         0: 'runop1equalsop2'
 
     c 'op2equalsop1':       
         0: 'runop2equalsop1'
-    d 'op1equalsresult':
-        0: 'runop1equalsresult'
-    e 'op2equalsresult':
-        0: 'runop2equalsresult'
+    d 'clearop1':
+        0: 'clearop1'
+    e 'clearop2':
+        0: 'clearop2'
     f 'op1equalsresult':
         0: 'runop1equalsresult'
-    10 'op2equalsresult:
+    10 'op1c2':
+        0:  'lookforfirst1'
+        1:  'c2'
+    11 'op1c2':
+        0:  'lookforfirst1'
+        1:  'c2'
+    12 'op2equalsresult':
         0: 'runop2equalsresult'
+    13 'clearcarry':
+        0: 'runclearcarry'
+
 Memory
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
 0-3-0: registers
@@ -109,6 +123,8 @@ abs
 or
 and
 not
+complement op1 to 2 'op1c2' DONE
+complemnet op2 to 2 'op2c2' DONE
 
 TODO
 register manipulation 'regmanipulation' 
@@ -119,6 +135,12 @@ register manipulation 'regmanipulation'
     op1 <- result DONE
     op2 <- result DONE
     bit-lvl ptr to begin BUG # Caused some functions to be ignored. has been removed.
+    op1c2 DONE
+    op2c2 DONE 
+    op2equalsresult DONE
+    clearcarry DONE
+
+    
     
 
 Memory 'mem'
@@ -174,6 +196,7 @@ instruction set
         or
         and
         not
+        c2
     ·data transfer instructions:
         st
         ld
@@ -209,4 +232,19 @@ microprogram format
         all the runner does is link to the next mcfunction.
         mcfunction linking is done by placing a redstone_block under the AS that represents the next mcfunction in the sequence & a
         stone block under AS of the mcfunction that has just finished execution.
+
+
+******************************************************
+Arithmetic details
+******************************************************
+    ·Negative numbers: represented with complement to the base (2).
+    ·Division: slow division algorithm:
+        if op2 == 0
+            math error
+        if sign(op2) != 1
+            'op2c2'
+            fd
+        
+        
+
 
