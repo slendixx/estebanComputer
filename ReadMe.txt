@@ -120,21 +120,70 @@ ALU
 
 Memory
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
-0-3-0: registers
-    0: bank 0 pointers
-        0: dir pointer 0
-        1: dir pointer 0 start pos
-    1: bank 1 pointers
-            0: dir pointer 1
-            1: dir pointer 1 start pos
-    2: bank 2 pointers
-            0: dir pointer 2
-            1: dir pointer 2 start pos
-    3: bank 3 pointers
-            0: dir pointer 3
-            1: dir pointer 3 start pos
-0-3-1:
+0-3-0: mem module decoder pointers:
+    0-... :bank 0
+    1-... :bank 1
+    2-... :bank 2
+    3-... :bank 3
+
+0-3-1: mem decoder pointers:
+    0:
+        0: decoder 0 memory direction pointer
+        1: decoder 0 bit-lvl direction pointer nº0
+        ...
+        8: decoder 0 bit-lvl direction pointer nº8
+    1:
+        0: decoder 0 memory direction pointer
+        1: decoder 0 bit-lvl direction pointer nº0
+        ...
+        8: decoder 0 bit-lvl input pointer nº8
+    2:
+        0: decoder 0 memory direction pointer
+        1: decoder 0 bit-lvl direction pointer nº0
+        ...
+        8: decoder 0 bit-lvl direction pointer nº8
+    3:
+        0: decoder 0memory direction pointer
+        1: decoder 0 bit-lvl direction pointer nº0
+        ...
+        8: decoder 0 bit-lvl direction pointer nº8
+
+    8: 
+        0: bit-lvl input direction pointer nº0
+        ...
+        10: bit-lvl input direction pointer nº10
+    
+0-3-2:
     0-0: decoder result ptr 'decoresultptr'
+
+0-3-3: functions
+    0: decode mem module 0
+        0: 'decodemodule0'
+        1: 'testfordirmatch'
+        2: 'ifdirmatch'{
+            # memory direction found
+            3: 'pointtoresult'
+            4: 'cleanup'
+            5: 'dirptrstobegin'
+        } else{
+            # memory direction not yet found
+            6: 'cleanup'
+            7: 'stepdirptrs'
+        }
+    1: decode mem module 1
+        0: 'decodemodule1'
+    2: decode mem module 2
+        0: 'decodemodule2'
+    3: decode mem module 3
+        0: 'decodemodule3'
+
+    8:  decode mem module selector
+        0: 'decodemoduleselector'    
+    9: decoder bit-lvl dir match pointers
+        0: bit-lvl dir match pointer nº0
+        ...
+        7: bit-lvl dir match pointer nº7
+    a-0: decoder dir match observer
 
 GPU
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
@@ -202,7 +251,7 @@ register manipulation 'regmanipulation'
 
 Memory 'mem'
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
-links from bit-lvl mem pointer nº 0-31 to alu bit-lvl pointers and back DONE
+links from bit-lvl mem pointer nº 0-31 to alu bit-lvl register pointers and back DONE
 links between alu bit-lvl pointers TODO
 
 GPU 'gpu'

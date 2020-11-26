@@ -360,24 +360,144 @@ summon minecraft:armor_stand 22 5 -19 {UUIDMost:131072l,UUIDLeast:53480245575024
 
 # memory 'mem'
 # ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
-#mem bank 0
-summon minecraft:armor_stand -2 20 -1 {UUIDMost:196608l,UUIDLeast:0l,NoGravity:true,CustomName:"\"0-3-0-0-0\"",CustomNameVisible:true}
-summon minecraft:armor_stand -2 20 -1 {UUIDMost:196608l,UUIDLeast:1l,NoGravity:true,CustomName:"\"0-3-0-0-1\"",CustomNameVisible:true}
+## Memory module decoder
+# mem module 0 decoders
+summon minecraft:armor_stand -4 20 -1 {UUIDMost:196608l,UUIDLeast:0l,NoGravity:true,CustomName:"\"0-3-0-0-0\"",CustomNameVisible:true}
+summon minecraft:armor_stand -3 20 -1 {UUIDMost:196608l,UUIDLeast:1l,NoGravity:true,CustomName:"\"0-3-0-0-1\"",CustomNameVisible:true}
+# mem module 1 decoders
+summon minecraft:armor_stand -4 23 -1 {UUIDMost:196608l,UUIDLeast:281474976710656l,NoGravity:true,CustomName:"\"0-3-0-1-0\"",CustomNameVisible:true}
+summon minecraft:armor_stand -3 23 -1 {UUIDMost:196608l,UUIDLeast:281474976710657l,NoGravity:true,CustomName:"\"0-3-0-1-1\"",CustomNameVisible:true}
+# mem module 2 decoders
+summon minecraft:armor_stand -4 26 -1 {UUIDMost:196608l,UUIDLeast:562949953421312l,NoGravity:true,CustomName:"\"0-3-0-2-0\"",CustomNameVisible:true}
+summon minecraft:armor_stand -3 26 -1 {UUIDMost:196608l,UUIDLeast:562949953421313l,NoGravity:true,CustomName:"\"0-3-0-2-1\"",CustomNameVisible:true}
+# mem module 3 decoders
+summon minecraft:armor_stand -4 29 -1 {UUIDMost:196608l,UUIDLeast:844424930131968l,NoGravity:true,CustomName:"\"0-3-0-3-0\"",CustomNameVisible:true}
+summon minecraft:armor_stand -3 29 -1 {UUIDMost:196608l,UUIDLeast:844424930131969l,NoGravity:true,CustomName:"\"0-3-0-3-1\"",CustomNameVisible:true}
 
-#mem bank 1
-summon minecraft:armor_stand -2 23 -1 {UUIDMost:196608l,UUIDLeast:281474976710656l,NoGravity:true,CustomName:"\"0-3-0-1-0\"",CustomNameVisible:true}
-summon minecraft:armor_stand -2 23 -1 {UUIDMost:196608l,UUIDLeast:281474976710657l,NoGravity:true,CustomName:"\"0-3-0-1-1\"",CustomNameVisible:true}
+## Memory module 0 directions decoder
+summon minecraft:armor_stand -2 20 -1 {UUIDMost:196609l,UUIDLeast:0l,NoGravity:true,CustomName:"\"0-3-1-0-0\"",CustomNameVisible:true}
+summon minecraft:armor_stand -1 20 -1 {UUIDMost:196609l,UUIDLeast:1l,NoGravity:true,CustomName:"\"0-3-1-0-1\"",CustomNameVisible:true}
+summon minecraft:armor_stand 0 20 -1 {UUIDMost:196609l,UUIDLeast:2l,NoGravity:true,CustomName:"\"0-3-1-0-2\"",CustomNameVisible:true}
+summon minecraft:armor_stand 1 20 -1 {UUIDMost:196609l,UUIDLeast:3l,NoGravity:true,CustomName:"\"0-3-1-0-3\"",CustomNameVisible:true}
+summon minecraft:armor_stand 2 20 -1 {UUIDMost:196609l,UUIDLeast:4l,NoGravity:true,CustomName:"\"0-3-1-0-4\"",CustomNameVisible:true}
+summon minecraft:armor_stand 3 20 -1 {UUIDMost:196609l,UUIDLeast:5l,NoGravity:true,CustomName:"\"0-3-1-0-5\"",CustomNameVisible:true}
+summon minecraft:armor_stand 4 20 -1 {UUIDMost:196609l,UUIDLeast:6l,NoGravity:true,CustomName:"\"0-3-1-0-6\"",CustomNameVisible:true}
+summon minecraft:armor_stand 5 20 -1 {UUIDMost:196609l,UUIDLeast:7l,NoGravity:true,CustomName:"\"0-3-1-0-7\"",CustomNameVisible:true}
+summon minecraft:armor_stand 6 20 -1 {UUIDMost:196609l,UUIDLeast:8l,NoGravity:true,CustomName:"\"0-3-1-0-8\"",CustomNameVisible:true}
 
-#mem bank 2
-summon minecraft:armor_stand -2 26 -1 {UUIDMost:196608l,UUIDLeast:562949953421312l,NoGravity:true,CustomName:"\"0-3-0-2-0\"",CustomNameVisible:true}
-summon minecraft:armor_stand -2 26 -1 {UUIDMost:196608l,UUIDLeast:562949953421313l,NoGravity:true,CustomName:"\"0-3-0-2-1\"",CustomNameVisible:true}
+## Memory module 1 directions decoder
+summon minecraft:armor_stand -2 23 -1 {UUIDMost:196609l,UUIDLeast:281474976710656l,NoGravity:true,CustomName:"\"0-3-1-1-0\"",CustomNameVisible:true}
+summon minecraft:armor_stand -1 23 -1 {UUIDMost:196609l,UUIDLeast:281474976710657l,NoGravity:true,CustomName:"\"0-3-1-1-1\"",CustomNameVisible:true}
+summon minecraft:armor_stand 0 23 -1 {UUIDMost:196609l,UUIDLeast:281474976710658l,NoGravity:true,CustomName:"\"0-3-1-1-2\"",CustomNameVisible:true}
+summon minecraft:armor_stand 1 23 -1 {UUIDMost:196609l,UUIDLeast:281474976710659l,NoGravity:true,CustomName:"\"0-3-1-1-3\"",CustomNameVisible:true}
+summon minecraft:armor_stand 2 23 -1 {UUIDMost:196609l,UUIDLeast:281474976710660l,NoGravity:true,CustomName:"\"0-3-1-1-4\"",CustomNameVisible:true}
+summon minecraft:armor_stand 3 23 -1 {UUIDMost:196609l,UUIDLeast:281474976710661l,NoGravity:true,CustomName:"\"0-3-1-1-5\"",CustomNameVisible:true}
+summon minecraft:armor_stand 4 23 -1 {UUIDMost:196609l,UUIDLeast:281474976710662l,NoGravity:true,CustomName:"\"0-3-1-1-6\"",CustomNameVisible:true}
+summon minecraft:armor_stand 5 23 -1 {UUIDMost:196609l,UUIDLeast:281474976710663l,NoGravity:true,CustomName:"\"0-3-1-1-7\"",CustomNameVisible:true}
+summon minecraft:armor_stand 6 23 -1 {UUIDMost:196609l,UUIDLeast:281474976710664l,NoGravity:true,CustomName:"\"0-3-1-1-8\"",CustomNameVisible:true}
 
-#mem bank 3
-summon minecraft:armor_stand -2 29 -1 {UUIDMost:196608l,UUIDLeast:844424930131968l,NoGravity:true,CustomName:"\"0-3-0-3-0\"",CustomNameVisible:true}
-summon minecraft:armor_stand -2 29 -1 {UUIDMost:196608l,UUIDLeast:844424930131969l,NoGravity:true,CustomName:"\"0-3-0-3-1\"",CustomNameVisible:true}
+## Memory module 2 directions decoder
+summon minecraft:armor_stand -2 26 -1 {UUIDMost:196609l,UUIDLeast:562949953421312l,NoGravity:true,CustomName:"\"0-3-1-2-0\"",CustomNameVisible:true}
+summon minecraft:armor_stand -1 26 -1 {UUIDMost:196609l,UUIDLeast:562949953421313l,NoGravity:true,CustomName:"\"0-3-1-2-1\"",CustomNameVisible:true}
+summon minecraft:armor_stand 0 26 -1 {UUIDMost:196609l,UUIDLeast:562949953421314l,NoGravity:true,CustomName:"\"0-3-1-2-2\"",CustomNameVisible:true}
+summon minecraft:armor_stand 1 26 -1 {UUIDMost:196609l,UUIDLeast:562949953421315l,NoGravity:true,CustomName:"\"0-3-1-2-3\"",CustomNameVisible:true}
+summon minecraft:armor_stand 2 26 -1 {UUIDMost:196609l,UUIDLeast:562949953421316l,NoGravity:true,CustomName:"\"0-3-1-2-4\"",CustomNameVisible:true}
+summon minecraft:armor_stand 3 26 -1 {UUIDMost:196609l,UUIDLeast:562949953421317l,NoGravity:true,CustomName:"\"0-3-1-2-5\"",CustomNameVisible:true}
+summon minecraft:armor_stand 4 26 -1 {UUIDMost:196609l,UUIDLeast:562949953421318l,NoGravity:true,CustomName:"\"0-3-1-2-6\"",CustomNameVisible:true}
+summon minecraft:armor_stand 5 26 -1 {UUIDMost:196609l,UUIDLeast:562949953421319l,NoGravity:true,CustomName:"\"0-3-1-2-7\"",CustomNameVisible:true}
+summon minecraft:armor_stand 6 26 -1 {UUIDMost:196609l,UUIDLeast:562949953421320l,NoGravity:true,CustomName:"\"0-3-1-2-8\"",CustomNameVisible:true}
 
-#decoder result pointer
-summon minecraft:armor_stand 8 20 -1 {UUIDMost:196609l,UUIDLeast:0l,NoGravity:true,CustomName:"\"0-3-1-0-0\"",CustomNameVisible:true}
+
+## Memory module 3 directions decoder
+summon minecraft:armor_stand -2 29 -1 {UUIDMost:196609l,UUIDLeast:844424930131968l,NoGravity:true,CustomName:"\"0-3-1-3-0\"",CustomNameVisible:true}
+summon minecraft:armor_stand -1 29 -1 {UUIDMost:196609l,UUIDLeast:844424930131969l,NoGravity:true,CustomName:"\"0-3-1-3-1\"",CustomNameVisible:true}
+summon minecraft:armor_stand 0 29 -1 {UUIDMost:196609l,UUIDLeast:844424930131970l,NoGravity:true,CustomName:"\"0-3-1-3-2\"",CustomNameVisible:true}
+summon minecraft:armor_stand 1 29 -1 {UUIDMost:196609l,UUIDLeast:844424930131971l,NoGravity:true,CustomName:"\"0-3-1-3-3\"",CustomNameVisible:true}
+summon minecraft:armor_stand 2 29 -1 {UUIDMost:196609l,UUIDLeast:844424930131972l,NoGravity:true,CustomName:"\"0-3-1-3-4\"",CustomNameVisible:true}
+summon minecraft:armor_stand 3 29 -1 {UUIDMost:196609l,UUIDLeast:844424930131973l,NoGravity:true,CustomName:"\"0-3-1-3-5\"",CustomNameVisible:true}
+summon minecraft:armor_stand 4 29 -1 {UUIDMost:196609l,UUIDLeast:844424930131974l,NoGravity:true,CustomName:"\"0-3-1-3-6\"",CustomNameVisible:true}
+summon minecraft:armor_stand 5 29 -1 {UUIDMost:196609l,UUIDLeast:844424930131975l,NoGravity:true,CustomName:"\"0-3-1-3-7\"",CustomNameVisible:true}
+summon minecraft:armor_stand 6 29 -1 {UUIDMost:196609l,UUIDLeast:844424930131976l,NoGravity:true,CustomName:"\"0-3-1-3-8\"",CustomNameVisible:true}
+
+# Memory input directions pointers
+summon minecraft:armor_stand -12 17 -1 {UUIDMost:196609l,UUIDLeast:2251799813685248l,NoGravity:true,CustomName:"\"0-3-1-8-0\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -11 17 -1 {UUIDMost:196609l,UUIDLeast:2251799813685249l,NoGravity:true,CustomName:"\"0-3-1-8-1\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -10 17 -1 {UUIDMost:196609l,UUIDLeast:2251799813685250l,NoGravity:true,CustomName:"\"0-3-1-8-2\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -9 17 -1 {UUIDMost:196609l,UUIDLeast:2251799813685251l,NoGravity:true,CustomName:"\"0-3-1-8-3\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -8 17 -1 {UUIDMost:196609l,UUIDLeast:2251799813685252l,NoGravity:true,CustomName:"\"0-3-1-8-4\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -7 17 -1 {UUIDMost:196609l,UUIDLeast:2251799813685253l,NoGravity:true,CustomName:"\"0-3-1-8-5\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -6 17 -1 {UUIDMost:196609l,UUIDLeast:2251799813685254l,NoGravity:true,CustomName:"\"0-3-1-8-6\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -5 17 -1 {UUIDMost:196609l,UUIDLeast:2251799813685255l,NoGravity:true,CustomName:"\"0-3-1-8-7\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -4 17 -1 {UUIDMost:196609l,UUIDLeast:2251799813685256l,NoGravity:true,CustomName:"\"0-3-1-8-8\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -3 17 -1 {UUIDMost:196609l,UUIDLeast:2251799813685257l,NoGravity:true,CustomName:"\"0-3-1-8-9\"",CustomNameVisible:true,Invisible:true}
+
+# Memory decoder mcfunctions
+#module 0
+summon minecraft:armor_stand -3 17 2 {UUIDMost:196611l,UUIDLeast:0l,NoGravity:true,CustomName:"\"0-3-3-0-0\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -3 17 5 {UUIDMost:196611l,UUIDLeast:1l,NoGravity:true,CustomName:"\"0-3-3-0-1\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -3 17 8 {UUIDMost:196611l,UUIDLeast:2l,NoGravity:true,CustomName:"\"0-3-3-0-2\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -3 17 11 {UUIDMost:196611l,UUIDLeast:3l,NoGravity:true,CustomName:"\"0-3-3-0-3\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -3 17 14 {UUIDMost:196611l,UUIDLeast:4l,NoGravity:true,CustomName:"\"0-3-3-0-4\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -3 17 17 {UUIDMost:196611l,UUIDLeast:5l,NoGravity:true,CustomName:"\"0-3-3-0-5\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -3 17 20 {UUIDMost:196611l,UUIDLeast:6l,NoGravity:true,CustomName:"\"0-3-3-0-6\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -3 17 23 {UUIDMost:196611l,UUIDLeast:7l,NoGravity:true,CustomName:"\"0-3-3-0-7\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -3 17 26 {UUIDMost:196611l,UUIDLeast:8l,NoGravity:true,CustomName:"\"0-3-3-0-8\"",CustomNameVisible:true,Invisible:true}
+
+
+#module 1
+summon minecraft:armor_stand -4 17 2 {UUIDMost:196611l,UUIDLeast:281474976710656l,NoGravity:true,CustomName:"\"0-3-3-1-0\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -4 17 5 {UUIDMost:196611l,UUIDLeast:281474976710657l,NoGravity:true,CustomName:"\"0-3-3-1-1\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -4 17 8 {UUIDMost:196611l,UUIDLeast:281474976710658l,NoGravity:true,CustomName:"\"0-3-3-1-2\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -4 17 11 {UUIDMost:196611l,UUIDLeast:281474976710659l,NoGravity:true,CustomName:"\"0-3-3-1-3\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -4 17 14 {UUIDMost:196611l,UUIDLeast:281474976710660l,NoGravity:true,CustomName:"\"0-3-3-1-4\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -4 17 17 {UUIDMost:196611l,UUIDLeast:281474976710661l,NoGravity:true,CustomName:"\"0-3-3-1-5\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -4 17 20 {UUIDMost:196611l,UUIDLeast:281474976710662l,NoGravity:true,CustomName:"\"0-3-3-1-6\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -4 17 23 {UUIDMost:196611l,UUIDLeast:281474976710663l,NoGravity:true,CustomName:"\"0-3-3-1-7\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -4 17 26 {UUIDMost:196611l,UUIDLeast:281474976710664l,NoGravity:true,CustomName:"\"0-3-3-1-8\"",CustomNameVisible:true,Invisible:true}
+
+
+#module 2
+summon minecraft:armor_stand -5 17 2 {UUIDMost:196611l,UUIDLeast:562949953421312l,NoGravity:true,CustomName:"\"0-3-3-2-0\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -5 17 5 {UUIDMost:196611l,UUIDLeast:562949953421313l,NoGravity:true,CustomName:"\"0-3-3-2-1\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -5 17 8 {UUIDMost:196611l,UUIDLeast:562949953421314l,NoGravity:true,CustomName:"\"0-3-3-2-2\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -5 17 11 {UUIDMost:196611l,UUIDLeast:562949953421315l,NoGravity:true,CustomName:"\"0-3-3-2-3\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -5 17 14 {UUIDMost:196611l,UUIDLeast:562949953421316l,NoGravity:true,CustomName:"\"0-3-3-2-4\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -5 17 17 {UUIDMost:196611l,UUIDLeast:562949953421317l,NoGravity:true,CustomName:"\"0-3-3-2-5\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -5 17 20 {UUIDMost:196611l,UUIDLeast:562949953421318l,NoGravity:true,CustomName:"\"0-3-3-2-6\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -5 17 23 {UUIDMost:196611l,UUIDLeast:562949953421319l,NoGravity:true,CustomName:"\"0-3-3-2-7\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -5 17 26 {UUIDMost:196611l,UUIDLeast:562949953421320l,NoGravity:true,CustomName:"\"0-3-3-2-8\"",CustomNameVisible:true,Invisible:true}
+
+
+#module 3
+summon minecraft:armor_stand -6 17 2 {UUIDMost:196611l,UUIDLeast:844424930131968l,NoGravity:true,CustomName:"\"0-3-3-3-0\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -6 17 5 {UUIDMost:196611l,UUIDLeast:844424930131969l,NoGravity:true,CustomName:"\"0-3-3-3-1\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -6 17 8 {UUIDMost:196611l,UUIDLeast:844424930131970l,NoGravity:true,CustomName:"\"0-3-3-3-2\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -6 17 11 {UUIDMost:196611l,UUIDLeast:844424930131971l,NoGravity:true,CustomName:"\"0-3-3-3-3\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -6 17 14 {UUIDMost:196611l,UUIDLeast:844424930131972l,NoGravity:true,CustomName:"\"0-3-3-3-4\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -6 17 17 {UUIDMost:196611l,UUIDLeast:844424930131973l,NoGravity:true,CustomName:"\"0-3-3-3-5\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -6 17 20 {UUIDMost:196611l,UUIDLeast:844424930131974l,NoGravity:true,CustomName:"\"0-3-3-3-6\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -6 17 23 {UUIDMost:196611l,UUIDLeast:844424930131975l,NoGravity:true,CustomName:"\"0-3-3-3-7\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand -6 17 26 {UUIDMost:196611l,UUIDLeast:844424930131976l,NoGravity:true,CustomName:"\"0-3-3-3-8\"",CustomNameVisible:true,Invisible:true}
+
+
+#module selector
+summon minecraft:armor_stand -11 17 2 {UUIDMost:196611l,UUIDLeast:2251799813685248l,NoGravity:true,CustomName:"\"0-3-3-8-0\"",CustomNameVisible:true,Invisible:true}
+
+# decoder bit-lvl dir match pointers
+summon minecraft:armor_stand -1 17 2 {UUIDMost:196611l,UUIDLeast:2533274790395904l,NoGravity:true,CustomName:"\"0-3-3-9-0\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 0 17 2 {UUIDMost:196611l,UUIDLeast:2533274790395905l,NoGravity:true,CustomName:"\"0-3-3-9-1\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 1 17 2 {UUIDMost:196611l,UUIDLeast:2533274790395906l,NoGravity:true,CustomName:"\"0-3-3-9-2\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 2 17 2 {UUIDMost:196611l,UUIDLeast:2533274790395907l,NoGravity:true,CustomName:"\"0-3-3-9-3\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 3 17 2 {UUIDMost:196611l,UUIDLeast:2533274790395908l,NoGravity:true,CustomName:"\"0-3-3-9-4\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 4 17 2 {UUIDMost:196611l,UUIDLeast:2533274790395909l,NoGravity:true,CustomName:"\"0-3-3-9-5\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 5 17 2 {UUIDMost:196611l,UUIDLeast:2533274790395910l,NoGravity:true,CustomName:"\"0-3-3-9-6\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 6 17 2 {UUIDMost:196611l,UUIDLeast:2533274790395911l,NoGravity:true,CustomName:"\"0-3-3-9-7\"",CustomNameVisible:true,Invisible:true}
+#decoder dir match observer
+summon minecraft:armor_stand 8 17 2 {UUIDMost:196611l,UUIDLeast:2814749767106560l,NoGravity:true,CustomName:"\"0-3-3-a-0\"",CustomNameVisible:true,Invisible:true}
+
+# Memory direction decoder result pointer
+summon minecraft:armor_stand 8 20 -1 {UUIDMost:196610l,UUIDLeast:0l,NoGravity:true,CustomName:"\"0-3-2-0-0\"",CustomNameVisible:true}
+
 
 # utilities 'util'
 # ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
