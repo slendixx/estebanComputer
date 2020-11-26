@@ -9,29 +9,21 @@
   <body>
     <div>
       <h2>Enter UUID Value:</h2>
-      <label for=""
+      <label
         >First field: <input type="number" id="first" disabled value="0"
       /></label>
       <input type="text" id="firstHex" disabled />
       <br />
-      <label for=""
-        >Second field: <input type="number" id="second" value="1"
-      /></label>
+      <label>Second field: <input type="number" id="second" value="1" /></label>
       <input type="text" id="secondHex" disabled />
       <br />
-      <label for=""
-        >Third field: <input type="number" id="third" value="1"
-      /></label>
+      <label>Third field: <input type="number" id="third" value="1" /></label>
       <input type="text" id="thirdHex" disabled />
       <br />
-      <label for=""
-        >Forth field: <input type="number" id="forth" value="1"
-      /></label>
+      <label>Forth field: <input type="number" id="forth" value="1" /></label>
       <input type="text" id="forthHex" disabled />
       <br />
-      <label for=""
-        >Fifth field: <input type="number" id="fifth" value="1"
-      /></label>
+      <label>Fifth field: <input type="number" id="fifth" value="1" /></label>
       <input type="text" id="fifthHex" disabled />
       <br />
     </div>
@@ -41,12 +33,50 @@
       <label for="">y: <input type="number" id="y" value="5" /></label>
       <label for="">z: <input type="number" id="z" value="0" /></label>
     </div>
-    <!-- <div>
-      <h2>Options</h2>
-    </div> -->
     <button id="summon">Generate summon command</button>
     <textarea name="" id="result" cols="50" rows="3"></textarea>
     <button id="copy">Copy to clipboard</button>
+
+    <div>
+      <h2>Options</h2>
+      <div>
+        <label
+          >Generate multiple: <input type="checkbox" id="multiple"
+        /></label>
+        <label>Amount: <input type="number" id="amount" /></label>
+        <br />
+        <label
+          >First field increase:
+          <input type="number" id="first-increase" disabled value="0"
+        /></label>
+        <br />
+        <label
+          >Second field increase:
+          <input type="number" id="second-increase" value="0"
+        /></label>
+        <br />
+        <label
+          >Third field increase:
+          <input type="number" id="third-increase" value="0"
+        /></label>
+        <br />
+        <label
+          >Forth field increase:
+          <input type="number" id="forth-increase" value="0"
+        /></label>
+        <br />
+        <label
+          >Fifth field increase:
+          <input type="number" id="fifth-increase" value="1"
+        /></label>
+        <br />
+        <label>x increase: <input type="number" id="x-increase" /></label>
+        <label>y increase: <input type="number" id="y-increase" /></label>
+        <label>z increase: <input type="number" id="z-increase" /></label>
+        <br />
+        <label>Invisible: <input type="checkbox" id="invisible"></label>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

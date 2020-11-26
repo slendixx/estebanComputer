@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>System bus link maker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div>
+      <h2>Origin bus line UUID value:</h2>
+      <p>Enter the UUID for the first Armor Stand on the line only (bit 0)</p>
+      <label
+        >First field:
+        <input type="number" id="first" class="origin-uuid" disabled value="0"
+      /></label>
+      <input type="text" class="origin-hex" disabled />
+      <br />
+      <label
+        >Second field:
+        <input type="number" id="second" class="origin-uuid" value="1"
+      /></label>
+      <input type="text" class="origin-hex" disabled />
+      <br />
+      <label
+        >Third field:
+        <input type="number" id="third" class="origin-uuid" value="1"
+      /></label>
+      <input type="text" class="origin-hex" disabled />
+      <br />
+      <label
+        >Forth field:
+        <input type="number" id="forth" class="origin-uuid" value="1"
+      /></label>
+      <input type="text" class="origin-hex" disabled />
+      <br />
+      <label
+        >Fifth field:
+        <input type="number" id="fifth" class="origin-uuid" value="1"
+      /></label>
+      <input type="text" class="origin-hex" disabled />
+      <br />
+    </div>
+    <div>
+      <h2>Destination bus line UUID value:</h2>
+      <p>Enter the UUID for the first Armor Stand on the line only (bit 0)</p>
+      <label
+        >First field:
+        <input type="number" id="first" class="dest-uuid" disabled value="0"
+      /></label>
+      <input type="text" class="dest-hex" disabled />
+      <br />
+      <label
+        >Second field:
+        <input type="number" id="second" class="dest-uuid" value="1"
+      /></label>
+      <input type="text" class="dest-hex" disabled />
+      <br />
+      <label
+        >Third field:
+        <input type="number" id="third" class="dest-uuid" value="1"
+      /></label>
+      <input type="text" class="dest-hex" disabled />
+      <br />
+      <label
+        >Forth field:
+        <input type="number" id="forth" class="dest-uuid" value="1"
+      /></label>
+      <input type="text" class="dest-hex" disabled />
+      <br />
+      <label
+        >Fifth field:
+        <input type="number" id="fifth" class="dest-uuid" value="1"
+      /></label>
+      <input type="text" class="dest-hex" disabled />
+    </div>
+    <div>
+      <button id="link">Create link mcfunction</button>
+      <br />
+      <textarea name="" cols="30" rows="3" id="result"></textarea>
+      <br />
+      <button id="copy">Copy to clipboard</button>
+    </div>
+    <div>
+      <h2>Options:</h2>
+      <label
+        >Bus width: <input type="number" value="1" class="options"
+      /></label>
+      <br />
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
