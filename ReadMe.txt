@@ -21,6 +21,45 @@ AS index
 
 system bus
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
+0-0:
+    2:
+        1-0: bit-lvl op1 register pointer nº0
+        ...
+        1-31: bit-lvl op1 register pointer nº31
+
+        2-0: bit-lvl op2 register pointer nº0
+        ...
+        2-31: bit-lvl op2 register pointer nº31
+
+        3-0: bit-lvl carry register pointer nº0
+        ...
+        3-31: bit-lvl carry register pointer nº31
+
+        4-0: bit-lvl result register pointer nº0
+        ...
+        4-31: bit-lvl result register pointer nº31
+
+        5-0: bit-lvl t0 register pointer nº0
+        ...
+        5-31: bit-lvl t0 register pointer nº31
+
+        6-0: bit-lvl t1 register pointer nº0
+        ...
+        6-31: bit-lvl t1 register pointer nº31
+        
+        7-0: bit-lvl t2 register pointer nº0
+        ...
+        7-31: bit-lvl t2 register pointer nº31
+
+        8-0: bit-lvl t3 register pointer nº0
+        ...
+        8-31: bit-lvl t3 register pointer nº31
+
+    3:
+        0-0: bit-lvl memory pointer nº0
+        ...
+        0-31: bit-lvl memory pointer nº31
+    
 CU
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
 ALU
@@ -94,6 +133,8 @@ Memory
     3: bank 3 pointers
             0: dir pointer 3
             1: dir pointer 3 start pos
+0-3-1:
+    0-0: decoder result ptr 'decoresultptr'
 
 GPU
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
@@ -146,8 +187,8 @@ TODO
 register manipulation 'regmanipulation' 
     step forward 'stepfw' DONE
     step backward 'stepbw' DONE
-    op1 <- op2 DONE
-    op2 <- op1 DONE
+    op1 <- op2 'op1equalsop2'DONE
+    op2 <- op1 'op2equalsop1'DONE
     op1 <- result DONE
     op2 <- result DONE
     bit-lvl ptr to begin BUG # Caused some functions to be ignored. has been removed.
@@ -161,6 +202,9 @@ register manipulation 'regmanipulation'
 
 Memory 'mem'
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
+links from bit-lvl mem pointer nº 0-31 to alu bit-lvl pointers and back DONE
+links between alu bit-lvl pointers TODO
+
 GPU 'gpu'
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
 utilities 'util'
