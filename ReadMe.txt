@@ -22,7 +22,10 @@ AS index
 system bus
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
 0-0:
-    2:
+    1: CU
+
+
+    2: ALU
         1-0: bit-lvl op1 register pointer nº0
         ...
         1-31: bit-lvl op1 register pointer nº31
@@ -55,13 +58,100 @@ system bus
         ...
         8-31: bit-lvl t3 register pointer nº31
 
-    3:
+    3:  Memory
         0-0: bit-lvl memory pointer nº0
         ...
         0-31: bit-lvl memory pointer nº31
     
 CU
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
+0-1-0: registers
+    0: Computer state pointers:
+        0: BOOT
+        1: INSTRUCTION CYCLE
+        2: HALT
+        3: ERROR
+        4: BRANCH
+        5: SUBRUTINE
+        6: IBR
+            this state register determines whether or not there is an instruction in the IBR register. a value of 0x0000 in the IBR means there's no instruction there.
+    1: PC
+        0: bit-lvl register pointer nº0
+        ...
+        9: bit-lvl register pointer nº9
+    2: IR
+        0: bit-lvl register pointer nº0
+        ...
+        15: bit-lvl register pointer nº15
+    3: IBR
+        0: bit-lvl register pointer nº0
+        ...
+        15: bit-lvl register pointer nº15
+    4: PC increase amount register
+        0: bit-lvl register pointer nº0
+        ...
+        9: bit-lvl register pointer nº9
+    5: Subrutine callback register
+        0: bit-lvl register pointer nº0
+        ...
+        9: bit-lvl register pointer nº9
+
+
+0-1-1: Instruction cycle:
+    0: Read next instruction
+        0: 'pctomar'
+        1: 'rundecodememmoduleselector'
+        2: 'ifmemready'{
+            3: '00300toir'
+        } else{
+            # wait
+        }
+        4: '00300toibr'
+        5: 'rundecodeoptype'
+    1: Decode instruction
+        0: decodeoptype
+        1: 'opt00'
+        2: 'opt01'
+        3: 'opt10'
+        4: 'opt11'
+    2: Execute instruction
+        0: #run whichever instruction
+    3: Check for instruction in IBR
+        0: testforibr
+        1: if testforibr{
+            ibrtoir
+        } else{
+            runincpc
+        }
+    4: Increase PC
+        0: incpc
+        1: testforbranch
+        2: if testforbranch{
+            3: resetpcincamount
+        }
+        4: runcheckcomputerstate
+
+    5: check computer state
+        0: if CYCLE{
+            1: runrnextinstruction
+        } else{
+            #wait
+        }
+
+0-1-2: Instruction set implementation
+    0: ld00
+        0: 'ir11tomar'
+        1: 'rundecodemoduleselector'
+        2: 'ifmemready'{
+            3: '00300to00210'
+        } else{
+            # wait
+        }
+
+        4: 'runtestforibr' 
+        # continue with the instruction cycle
+
+
 ALU
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
 0-2-0: registers
@@ -121,10 +211,10 @@ ALU
 Memory
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
 0-3-0: mem module decoder pointers:
-    0-... :bank 0
-    1-... :bank 1
-    2-... :bank 2
-    3-... :bank 3
+    0-... :module 0
+    1-... :module 1
+    2-... :module 2
+    3-... :module 3
 
 0-3-1: mem decoder pointers:
     0:
@@ -155,6 +245,7 @@ Memory
     
 0-3-2:
     0-0: memory decoder result ptr 'decoresultptr'
+    1-0: memory state READY: =1 indicates that the memory is ready to decode another direction, bc it has finished decoding the last one. =0 the memory is decoding a direction
 
 0-3-3: functions
     0: decode mem module 0
@@ -183,6 +274,7 @@ Memory
         ...
         7: bit-lvl dir match pointer nº7
     a-0: decoder dir match observer
+
 
 GPU
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
@@ -264,13 +356,11 @@ build 512 memory directions  'buildmemdirections512':
     builds 512 memory directions
 
 ******************************************************
-instruction formats
+instruction formats TODO
 ******************************************************
-    instruction word length: 32 bits
+    instruction word length: 16 bits
 
     ·Arithmetic & logic instructions:
-        operation type 'opt': 2 bits
-        operation 'op': 5 bits
 
     ·data transfer instructions:
 
@@ -354,5 +444,102 @@ Arithmetic details
             fd
         
         
+******************************************************
+instructions
+******************************************************
 
+op. type: 00 
+Data Transfer
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
+ld M(rs)
+opt op  rd  K   rs
+00  0   0   0   00000000000
+
+ld K()
+opt op  rd  K   const
+00  0   0   1   00000000000
+
+st
+opt op  N/A N/A rd
+00  1   0   0   00000000000
+
+
+op. type: 01 
+Arithmetic & logic
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
+add
+opt op   N/A
+01  0000 0000000000
+
+sub
+opt op   N/A
+01  0001 0000000000
+
+mul
+opt op   N/A
+01  0010 0000000000
+
+div
+opt op   N/A
+01  0011 0000000000
+
+rshift
+opt op   N/A
+01  0100 0000000000
+
+lshift
+opt op   N/A
+01  0101 0000000000
+
+or
+opt op   N/A
+01  0101 0000000000
+
+and
+opt op   N/A
+01  0101 0000000000
+
+not
+opt op   rd N/A
+01  0101 0  000000000
+
+not
+opt op   rd N/A
+01  0101 1  000000000
+
+abs
+opt op   rd N/A
+01  0101 0  000000000
+
+abs
+opt op   rd N/A
+01  0101 0  000000000
+
+op. type: 10 
+Branch
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
+
+call
+opt op  rd
+10  000 00000000000
+
+jump
+opt op  rd
+10  001 00000000000
+
+ba
+opt op  rd
+10  010 00000000000
+
+be
+opt op  rd
+10  011 00000000000
+
+bneg
+opt op  rd
+10  100 00000000000
+
+bo
+opt op  rd
+10  101 00000000000
 

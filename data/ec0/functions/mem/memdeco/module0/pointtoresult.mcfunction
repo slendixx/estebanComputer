@@ -36,3 +36,4 @@ execute at 0-3-1-0-0 run tp 0-0-3-0-1f ~42 ~ ~
 
 execute at 0-3-3-0-3 run setblock ~ ~-1 ~ minecraft:stone destroy
 execute at 0-3-3-0-4 run setblock ~ ~-1 ~ minecraft:redstone_block destroy
+execute at 0-3-2-1-0 run setblock ~ ~-1 ~ minecraft:white_wool destroy

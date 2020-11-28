@@ -312,8 +312,144 @@ summon minecraft:armor_stand 40 20 -1 {UUIDMost:3l,UUIDLeast:31l,NoGravity:true,
 
 
 
+# CU
+# ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
+# Registers
+#Computer state pointers:
+# BOOT
+summon minecraft:armor_stand 49 14 23 {UUIDMost:65536l,UUIDLeast:0l,NoGravity:true,CustomName:"\"0-1-0-0-0\"",CustomNameVisible:true,Invisible:true}
+# INSTRUCTION CYCLE
+summon minecraft:armor_stand 51 14 23 {UUIDMost:65536l,UUIDLeast:1l,NoGravity:true,CustomName:"\"0-1-0-0-1\"",CustomNameVisible:true,Invisible:true}
+# HALT
+summon minecraft:armor_stand 53 14 23 {UUIDMost:65536l,UUIDLeast:2l,NoGravity:true,CustomName:"\"0-1-0-0-2\"",CustomNameVisible:true,Invisible:true}
+# ERROR
+summon minecraft:armor_stand 55 14 23 {UUIDMost:65536l,UUIDLeast:3l,NoGravity:true,CustomName:"\"0-1-0-0-3\"",CustomNameVisible:true,Invisible:true}
+# BRANCH
+summon minecraft:armor_stand 57 14 23 {UUIDMost:65536l,UUIDLeast:4l,NoGravity:true,CustomName:"\"0-1-0-0-4\"",CustomNameVisible:true,Invisible:true}
+# SUBRUTINE
+summon minecraft:armor_stand 59 14 23 {UUIDMost:65536l,UUIDLeast:5l,NoGravity:true,CustomName:"\"0-1-0-0-5\"",CustomNameVisible:true,Invisible:true}
+
+# PC
+summon minecraft:armor_stand 49 14 36 {UUIDMost:65536l,UUIDLeast:281474976710656l,NoGravity:true,CustomName:"\"0-1-0-1-0\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 50 14 36 {UUIDMost:65536l,UUIDLeast:281474976710657l,NoGravity:true,CustomName:"\"0-1-0-1-1\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 51 14 36 {UUIDMost:65536l,UUIDLeast:281474976710658l,NoGravity:true,CustomName:"\"0-1-0-1-2\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 52 14 36 {UUIDMost:65536l,UUIDLeast:281474976710659l,NoGravity:true,CustomName:"\"0-1-0-1-3\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 53 14 36 {UUIDMost:65536l,UUIDLeast:281474976710660l,NoGravity:true,CustomName:"\"0-1-0-1-4\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 54 14 36 {UUIDMost:65536l,UUIDLeast:281474976710661l,NoGravity:true,CustomName:"\"0-1-0-1-5\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 55 14 36 {UUIDMost:65536l,UUIDLeast:281474976710662l,NoGravity:true,CustomName:"\"0-1-0-1-6\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 56 14 36 {UUIDMost:65536l,UUIDLeast:281474976710663l,NoGravity:true,CustomName:"\"0-1-0-1-7\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 57 14 36 {UUIDMost:65536l,UUIDLeast:281474976710664l,NoGravity:true,CustomName:"\"0-1-0-1-8\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 58 14 36 {UUIDMost:65536l,UUIDLeast:281474976710665l,NoGravity:true,CustomName:"\"0-1-0-1-9\"",CustomNameVisible:true,Invisible:true}
+# IR
+summon minecraft:armor_stand 49 17 36 {UUIDMost:65536l,UUIDLeast:562949953421312l,NoGravity:true,CustomName:"\"0-1-0-2-0\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 50 17 36 {UUIDMost:65536l,UUIDLeast:562949953421313l,NoGravity:true,CustomName:"\"0-1-0-2-1\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 51 17 36 {UUIDMost:65536l,UUIDLeast:562949953421314l,NoGravity:true,CustomName:"\"0-1-0-2-2\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 52 17 36 {UUIDMost:65536l,UUIDLeast:562949953421315l,NoGravity:true,CustomName:"\"0-1-0-2-3\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 53 17 36 {UUIDMost:65536l,UUIDLeast:562949953421316l,NoGravity:true,CustomName:"\"0-1-0-2-4\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 54 17 36 {UUIDMost:65536l,UUIDLeast:562949953421317l,NoGravity:true,CustomName:"\"0-1-0-2-5\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 55 17 36 {UUIDMost:65536l,UUIDLeast:562949953421318l,NoGravity:true,CustomName:"\"0-1-0-2-6\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 56 17 36 {UUIDMost:65536l,UUIDLeast:562949953421319l,NoGravity:true,CustomName:"\"0-1-0-2-7\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 57 17 36 {UUIDMost:65536l,UUIDLeast:562949953421320l,NoGravity:true,CustomName:"\"0-1-0-2-8\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 58 17 36 {UUIDMost:65536l,UUIDLeast:562949953421321l,NoGravity:true,CustomName:"\"0-1-0-2-9\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 59 17 36 {UUIDMost:65536l,UUIDLeast:562949953421322l,NoGravity:true,CustomName:"\"0-1-0-2-a\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 60 17 36 {UUIDMost:65536l,UUIDLeast:562949953421323l,NoGravity:true,CustomName:"\"0-1-0-2-b\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 61 17 36 {UUIDMost:65536l,UUIDLeast:562949953421324l,NoGravity:true,CustomName:"\"0-1-0-2-c\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 62 17 36 {UUIDMost:65536l,UUIDLeast:562949953421325l,NoGravity:true,CustomName:"\"0-1-0-2-d\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 63 17 36 {UUIDMost:65536l,UUIDLeast:562949953421326l,NoGravity:true,CustomName:"\"0-1-0-2-e\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 64 17 36 {UUIDMost:65536l,UUIDLeast:562949953421327l,NoGravity:true,CustomName:"\"0-1-0-2-f\"",CustomNameVisible:true,Invisible:true}
+
+# IBR
+summon minecraft:armor_stand 49 20 36 {UUIDMost:65536l,UUIDLeast:844424930131968l,NoGravity:true,CustomName:"\"0-1-0-3-0\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 50 20 36 {UUIDMost:65536l,UUIDLeast:844424930131969l,NoGravity:true,CustomName:"\"0-1-0-3-1\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 51 20 36 {UUIDMost:65536l,UUIDLeast:844424930131970l,NoGravity:true,CustomName:"\"0-1-0-3-2\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 52 20 36 {UUIDMost:65536l,UUIDLeast:844424930131971l,NoGravity:true,CustomName:"\"0-1-0-3-3\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 53 20 36 {UUIDMost:65536l,UUIDLeast:844424930131972l,NoGravity:true,CustomName:"\"0-1-0-3-4\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 54 20 36 {UUIDMost:65536l,UUIDLeast:844424930131973l,NoGravity:true,CustomName:"\"0-1-0-3-5\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 55 20 36 {UUIDMost:65536l,UUIDLeast:844424930131974l,NoGravity:true,CustomName:"\"0-1-0-3-6\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 56 20 36 {UUIDMost:65536l,UUIDLeast:844424930131975l,NoGravity:true,CustomName:"\"0-1-0-3-7\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 57 20 36 {UUIDMost:65536l,UUIDLeast:844424930131976l,NoGravity:true,CustomName:"\"0-1-0-3-8\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 58 20 36 {UUIDMost:65536l,UUIDLeast:844424930131977l,NoGravity:true,CustomName:"\"0-1-0-3-9\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 59 20 36 {UUIDMost:65536l,UUIDLeast:844424930131978l,NoGravity:true,CustomName:"\"0-1-0-3-a\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 60 20 36 {UUIDMost:65536l,UUIDLeast:844424930131979l,NoGravity:true,CustomName:"\"0-1-0-3-b\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 61 20 36 {UUIDMost:65536l,UUIDLeast:844424930131980l,NoGravity:true,CustomName:"\"0-1-0-3-c\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 62 20 36 {UUIDMost:65536l,UUIDLeast:844424930131981l,NoGravity:true,CustomName:"\"0-1-0-3-d\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 63 20 36 {UUIDMost:65536l,UUIDLeast:844424930131982l,NoGravity:true,CustomName:"\"0-1-0-3-e\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 64 20 36 {UUIDMost:65536l,UUIDLeast:844424930131983l,NoGravity:true,CustomName:"\"0-1-0-3-f\"",CustomNameVisible:true,Invisible:true}
+
+# PC increase amount register
+summon minecraft:armor_stand 49 14 37 {UUIDMost:65536l,UUIDLeast:1125899906842624l,NoGravity:true,CustomName:"\"0-1-0-4-0\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 50 14 37 {UUIDMost:65536l,UUIDLeast:1125899906842625l,NoGravity:true,CustomName:"\"0-1-0-4-1\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 51 14 37 {UUIDMost:65536l,UUIDLeast:1125899906842626l,NoGravity:true,CustomName:"\"0-1-0-4-2\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 52 14 37 {UUIDMost:65536l,UUIDLeast:1125899906842627l,NoGravity:true,CustomName:"\"0-1-0-4-3\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 53 14 37 {UUIDMost:65536l,UUIDLeast:1125899906842628l,NoGravity:true,CustomName:"\"0-1-0-4-4\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 54 14 37 {UUIDMost:65536l,UUIDLeast:1125899906842629l,NoGravity:true,CustomName:"\"0-1-0-4-5\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 55 14 37 {UUIDMost:65536l,UUIDLeast:1125899906842630l,NoGravity:true,CustomName:"\"0-1-0-4-6\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 56 14 37 {UUIDMost:65536l,UUIDLeast:1125899906842631l,NoGravity:true,CustomName:"\"0-1-0-4-7\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 57 14 37 {UUIDMost:65536l,UUIDLeast:1125899906842632l,NoGravity:true,CustomName:"\"0-1-0-4-8\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 58 14 37 {UUIDMost:65536l,UUIDLeast:1125899906842633l,NoGravity:true,CustomName:"\"0-1-0-4-9\"",CustomNameVisible:true,Invisible:true}
+
+# Subrutine callback register
+summon minecraft:armor_stand 59 14 25 {UUIDMost:65536l,UUIDLeast:1407374883553280l,NoGravity:true,CustomName:"\"0-1-0-5-0\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 60 14 25 {UUIDMost:65536l,UUIDLeast:1407374883553281l,NoGravity:true,CustomName:"\"0-1-0-5-1\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 61 14 25 {UUIDMost:65536l,UUIDLeast:1407374883553282l,NoGravity:true,CustomName:"\"0-1-0-5-2\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 62 14 25 {UUIDMost:65536l,UUIDLeast:1407374883553283l,NoGravity:true,CustomName:"\"0-1-0-5-3\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 63 14 25 {UUIDMost:65536l,UUIDLeast:1407374883553284l,NoGravity:true,CustomName:"\"0-1-0-5-4\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 64 14 25 {UUIDMost:65536l,UUIDLeast:1407374883553285l,NoGravity:true,CustomName:"\"0-1-0-5-5\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 65 14 25 {UUIDMost:65536l,UUIDLeast:1407374883553286l,NoGravity:true,CustomName:"\"0-1-0-5-6\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 66 14 25 {UUIDMost:65536l,UUIDLeast:1407374883553287l,NoGravity:true,CustomName:"\"0-1-0-5-7\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 67 14 25 {UUIDMost:65536l,UUIDLeast:1407374883553288l,NoGravity:true,CustomName:"\"0-1-0-5-8\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 68 14 25 {UUIDMost:65536l,UUIDLeast:1407374883553289l,NoGravity:true,CustomName:"\"0-1-0-5-9\"",CustomNameVisible:true,Invisible:true}
+
+# IBR state pointer =0 nothing on IBR, =1 instruction in IBR
+summon minecraft:armor_stand 49 20 34 {UUIDMost:65536l,UUIDLeast:6l,NoGravity:true,CustomName:"\"0-1-0-0-6\"",CustomNameVisible:true}
+
+# instruction cycle
+# 0) read next instruction
+summon minecraft:armor_stand 49 14 42 {UUIDMost:65537l,UUIDLeast:0l,NoGravity:true,CustomName:"\"0-1-1-0-0\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 49 14 45 {UUIDMost:65537l,UUIDLeast:1l,NoGravity:true,CustomName:"\"0-1-1-0-1\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 49 14 48 {UUIDMost:65537l,UUIDLeast:2l,NoGravity:true,CustomName:"\"0-1-1-0-2\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 49 14 51 {UUIDMost:65537l,UUIDLeast:3l,NoGravity:true,CustomName:"\"0-1-1-0-3\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 49 14 54 {UUIDMost:65537l,UUIDLeast:4l,NoGravity:true,CustomName:"\"0-1-1-0-4\"",CustomNameVisible:true,Invisible:true}
+
+# 1) Decode instruction
+summon minecraft:armor_stand 50 14 42 {UUIDMost:65537l,UUIDLeast:281474976710656l,NoGravity:true,CustomName:"\"0-1-1-1-0\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 50 14 45 {UUIDMost:65537l,UUIDLeast:281474976710657l,NoGravity:true,CustomName:"\"0-1-1-1-1\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 50 14 48 {UUIDMost:65537l,UUIDLeast:281474976710658l,NoGravity:true,CustomName:"\"0-1-1-1-2\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 50 14 51 {UUIDMost:65537l,UUIDLeast:281474976710659l,NoGravity:true,CustomName:"\"0-1-1-1-3\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 50 14 54 {UUIDMost:65537l,UUIDLeast:281474976710660l,NoGravity:true,CustomName:"\"0-1-1-1-4\"",CustomNameVisible:true,Invisible:true}
+
+# 2) Execute instruction
+
+# 3) Check for instruction in IBR
+summon minecraft:armor_stand 52 14 42 {UUIDMost:65537l,UUIDLeast:844424930131968l,NoGravity:true,CustomName:"\"0-1-1-3-0\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 52 14 45 {UUIDMost:65537l,UUIDLeast:844424930131969l,NoGravity:true,CustomName:"\"0-1-1-3-1\"",CustomNameVisible:true,Invisible:true}
+
+# 4) Increase PC
+summon minecraft:armor_stand 53 14 42 {UUIDMost:65537l,UUIDLeast:1125899906842624l,NoGravity:true,CustomName:"\"0-1-1-4-0\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 53 14 45 {UUIDMost:65537l,UUIDLeast:1125899906842625l,NoGravity:true,CustomName:"\"0-1-1-4-1\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 53 14 48 {UUIDMost:65537l,UUIDLeast:1125899906842626l,NoGravity:true,CustomName:"\"0-1-1-4-2\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 53 14 51 {UUIDMost:65537l,UUIDLeast:1125899906842627l,NoGravity:true,CustomName:"\"0-1-1-4-3\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 53 14 54 {UUIDMost:65537l,UUIDLeast:1125899906842628l,NoGravity:true,CustomName:"\"0-1-1-4-4\"",CustomNameVisible:true,Invisible:true}
+
+# 5) check computer state
+summon minecraft:armor_stand 54 14 42 {UUIDMost:65537l,UUIDLeast:1407374883553280l,NoGravity:true,CustomName:"\"0-1-1-5-0\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 54 14 45 {UUIDMost:65537l,UUIDLeast:1407374883553281l,NoGravity:true,CustomName:"\"0-1-1-5-1\"",CustomNameVisible:true,Invisible:true}
+
+
+# Instruction set implementation
+# ld00
+summon minecraft:armor_stand 51 23 42 {UUIDMost:65538l,UUIDLeast:0l,NoGravity:true,CustomName:"\"0-1-2-0-0\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 51 23 45 {UUIDMost:65538l,UUIDLeast:1l,NoGravity:true,CustomName:"\"0-1-2-0-1\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 51 23 48 {UUIDMost:65538l,UUIDLeast:2l,NoGravity:true,CustomName:"\"0-1-2-0-2\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 51 23 51 {UUIDMost:65538l,UUIDLeast:3l,NoGravity:true,CustomName:"\"0-1-2-0-3\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 51 23 54 {UUIDMost:65538l,UUIDLeast:4l,NoGravity:true,CustomName:"\"0-1-2-0-4\"",CustomNameVisible:true,Invisible:true}
+
+
+
 # ALU 'alu'
 # ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
+
+
 summon minecraft:armor_stand 22 5 6 {UUIDMost:131072l,UUIDLeast:0l,NoGravity:true,CustomName:"\"0-2-0-0-0\"",CustomNameVisible:true}
 summon minecraft:armor_stand 22 5 6 {UUIDMost:131072l,UUIDLeast:1l,NoGravity:true,CustomName:"\"0-2-0-0-1\"",CustomNameVisible:true}
 summon minecraft:armor_stand 22 5 9 {UUIDMost:131072l,UUIDLeast:2l,NoGravity:true,CustomName:"\"0-2-0-0-2\"",CustomNameVisible:true}
@@ -497,6 +633,9 @@ summon minecraft:armor_stand 8 17 2 {UUIDMost:196611l,UUIDLeast:2814749767106560
 
 # Memory direction decoder result pointer
 summon minecraft:armor_stand 8 20 -1 {UUIDMost:196610l,UUIDLeast:0l,NoGravity:true,CustomName:"\"0-3-2-0-0\"",CustomNameVisible:true}
+
+# Memory state pointer READY
+summon minecraft:armor_stand 8 17 -1 {UUIDMost:196610l,UUIDLeast:281474976710656l,NoGravity:true,CustomName:"\"0-3-2-1-0\"",CustomNameVisible:true,Invisible:true}
 
 
 # utilities 'util'
