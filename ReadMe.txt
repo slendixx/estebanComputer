@@ -154,7 +154,7 @@ Memory
         10: bit-lvl input direction pointer nº10
     
 0-3-2:
-    0-0: decoder result ptr 'decoresultptr'
+    0-0: memory decoder result ptr 'decoresultptr'
 
 0-3-3: functions
     0: decode mem module 0
@@ -163,13 +163,12 @@ Memory
         2: 'ifdirmatch'{
             # memory direction found
             3: 'pointtoresult'
-            4: 'cleanup'
-            5: 'dirptrstobegin'
+            4: 'dirptrstobegin'
         } else{
             # memory direction not yet found
-            6: 'cleanup'
-            7: 'stepdirptrs'
+            5: 'stepdirptrs'
         }
+        6: 'resetdirmatchcond'
     1: decode mem module 1
         0: 'decodemodule1'
     2: decode mem module 2

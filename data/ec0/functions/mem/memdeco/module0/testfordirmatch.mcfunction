@@ -1,1 +1,4 @@
 execute at 0-3-3-9-0 if block ~ ~-1 ~ minecraft:white_wool run execute at 0-3-3-9-1 if block ~ ~-1 ~ minecraft:white_wool run execute at 0-3-3-9-2 if block ~ ~-1 ~ minecraft:white_wool run execute at 0-3-3-9-3 if block ~ ~-1 ~ minecraft:white_wool run execute at 0-3-3-9-4 if block ~ ~-1 ~ minecraft:white_wool run execute at 0-3-3-9-5 if block ~ ~-1 ~ minecraft:white_wool run execute at 0-3-3-9-6 if block ~ ~-1 ~ minecraft:white_wool run execute at 0-3-3-9-7 if block ~ ~-1 ~ minecraft:white_wool run execute at 0-3-3-a-0 run setblock ~ ~-1 ~ minecraft:white_wool destroy
+
+execute at 0-3-3-0-1 run setblock ~ ~-1 ~ minecraft:stone destroy
+execute at 0-3-3-0-2 run setblock ~ ~-1 ~ minecraft:redstone_block destroy
