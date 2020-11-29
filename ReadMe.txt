@@ -124,12 +124,13 @@ CU
             runincpc
         }
     4: Increase PC
-        0: incpc
-        1: testforbranch
-        2: if testforbranch{
-            3: resetpcincamount
+        0: 'pctoalu': op1 = pc, op2 = pc inc amount
+        1: incpc
+        2: clearcarry
+        3: resulttopc
+        4: if BRANCH{
+            5: resetpcincamount
         }
-        4: runcheckcomputerstate
 
     5: check computer state
         0: if CYCLE{

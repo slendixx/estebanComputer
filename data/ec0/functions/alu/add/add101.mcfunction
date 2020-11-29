@@ -1,4 +1,4 @@
-0-2-0-0-0# perform addition with input
+
 # op1=1, op2=0, Ci-1=1
 # results
 # s=0, Ci=1

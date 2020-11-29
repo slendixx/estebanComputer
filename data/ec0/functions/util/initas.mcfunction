@@ -423,6 +423,8 @@ summon minecraft:armor_stand 50 14 54 {UUIDMost:65537l,UUIDLeast:281474976710660
 # 3) Check for instruction in IBR
 summon minecraft:armor_stand 52 14 42 {UUIDMost:65537l,UUIDLeast:844424930131968l,NoGravity:true,CustomName:"\"0-1-1-3-0\"",CustomNameVisible:true,Invisible:true}
 summon minecraft:armor_stand 52 14 45 {UUIDMost:65537l,UUIDLeast:844424930131969l,NoGravity:true,CustomName:"\"0-1-1-3-1\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 52 14 48 {UUIDMost:65537l,UUIDLeast:844424930131970l,NoGravity:true,CustomName:"\"0-1-1-3-2\"",CustomNameVisible:true,Invisible:true}
+
 
 # 4) Increase PC
 summon minecraft:armor_stand 53 14 42 {UUIDMost:65537l,UUIDLeast:1125899906842624l,NoGravity:true,CustomName:"\"0-1-1-4-0\"",CustomNameVisible:true,Invisible:true}
@@ -430,6 +432,9 @@ summon minecraft:armor_stand 53 14 45 {UUIDMost:65537l,UUIDLeast:112589990684262
 summon minecraft:armor_stand 53 14 48 {UUIDMost:65537l,UUIDLeast:1125899906842626l,NoGravity:true,CustomName:"\"0-1-1-4-2\"",CustomNameVisible:true,Invisible:true}
 summon minecraft:armor_stand 53 14 51 {UUIDMost:65537l,UUIDLeast:1125899906842627l,NoGravity:true,CustomName:"\"0-1-1-4-3\"",CustomNameVisible:true,Invisible:true}
 summon minecraft:armor_stand 53 14 54 {UUIDMost:65537l,UUIDLeast:1125899906842628l,NoGravity:true,CustomName:"\"0-1-1-4-4\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 53 14 57 {UUIDMost:65537l,UUIDLeast:1125899906842629l,NoGravity:true,CustomName:"\"0-1-1-4-5\"",CustomNameVisible:true,Invisible:true}
+summon minecraft:armor_stand 53 14 60 {UUIDMost:65537l,UUIDLeast:1125899906842630l,NoGravity:true,CustomName:"\"0-1-1-4-6\"",CustomNameVisible:true,Invisible:true}
+
 
 # 5) check computer state
 summon minecraft:armor_stand 54 14 42 {UUIDMost:65537l,UUIDLeast:1407374883553280l,NoGravity:true,CustomName:"\"0-1-1-5-0\"",CustomNameVisible:true,Invisible:true}
