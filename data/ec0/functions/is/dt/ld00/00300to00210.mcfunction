@@ -97,4 +97,4 @@ execute at 0-0-3-0-1f if block ~ ~-1 ~ minecraft:black_wool run execute at 0-0-2
 execute at 0-0-3-0-1f if block ~ ~-1 ~ minecraft:white_wool run execute at 0-0-2-1-1f run setblock ~ ~-1 ~ minecraft:white_wool destroy
 
 execute at 0-1-2-0-3 run setblock ~ ~-1 ~ minecraft:stone destroy
-execute at 0-1-2-0-4 run setblock ~ ~-1 ~ minecraft:redstone_block destroy
+function ec0:cu/ibr/runtestforibr

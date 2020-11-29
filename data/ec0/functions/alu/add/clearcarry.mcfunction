@@ -32,3 +32,5 @@ execute at 0-0-2-3-1e run setblock ~ ~-1 ~ minecraft:black_wool destroy
 execute at 0-0-2-3-1f run setblock ~ ~-1 ~ minecraft:black_wool destroy
 
 execute at 0-2-0-1-1 run setblock ~ ~-1 ~ minecraft:stone destroy
+
+function ec0:cu/ibr/testforibr

@@ -133,14 +133,10 @@ CU
         }
 
     5: check computer state
-        0: if CYCLE{
-            1: runrnextinstruction
-        } else{
-            #wait
-        }
+        0: 'swithcstate'
 
 0-1-2: Instruction set implementation
-    0: ld00
+    0: ld00 DONE
         0: 'ir11tomar'
         1: 'rundecodemoduleselector'
         2: 'ifmemready'{
@@ -149,10 +145,63 @@ CU
             # wait
         }
 
-        4: 'runtestforibr' 
-        # continue with the instruction cycle
+    1: ld01 BUG
+        0: 'ir11toop1'
 
+    2: ld00 DONE
+        0: 'ir11tomar'
+        1: 'rundecodemoduleselector'
+        2: 'ifmemready'{
+            3: '00300to00220'
+        } else{
+            # wait
+        }
+    
+    3: ld11 BUG
+        0: 'ir11toop1'
 
+    4: st DONE
+        0: 'ir11tomar'
+        1: 'rundecodemoduleselector'
+        2: 'ifmemready'{
+            3: '00240to00300'
+        } else{
+            # wait
+        }
+
+    5: 
+        0: 'runadd'
+    6: 
+        0: 'runadd'
+    7: 
+        0: 'runadd'
+    8: 
+        0: 'runadd'
+    9: 
+        0: 'runadd'
+    a: 
+        0: 'runadd'
+    10: 
+        0: 'runadd'
+    5: 
+        0: 'runadd'
+    5: 
+        0: 'runadd'
+    5: 
+        0: 'runadd'
+    5: 
+        0: 'runadd'
+    5: 
+        0: 'runadd'
+    5: 
+        0: 'runadd'
+    5: 
+        0: 'runadd'
+    5: 
+        0: 'runadd'
+    5: 
+        0: 'runadd'
+    
 ALU
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
 0-2-0: registers
@@ -289,6 +338,169 @@ utilities 'util'
         3: 'memdirptrallnextdir'
         4: 'op1equalsresult'
 
+
+******************************************************
+instruction formats TODO
+******************************************************
+    instruction word length: 16 bits
+
+    ·Arithmetic & logic instructions:
+
+    ·data transfer instructions:
+
+    ·branch instructions:
+        call
+        jumpl
+        ba
+        be
+        bo
+        bneg
+    ·I/O:
+        read number 'rn'
+        read char 'rc'
+        read string 'rs'
+        print string 'ps'
+        print number 'ps'
+        
+        some other graphic instruction/s
+
+******************************************************
+instruction set
+******************************************************
+·Arithmetic & logic instructions:
+        add
+        sub
+        mul
+        div
+        rshift
+        lshift
+        abs
+        or
+        and
+        not
+        c2
+    ·data transfer instructions:
+        st
+        ld
+    ·branch instructions:
+        call
+        jumpl
+        ba
+        be
+        bo
+        bneg
+    ·I/O:
+        read number 'rn'
+        read char 'rc'
+        read string 'rs'
+        print string 'ps'
+        print number 'ps'
+        
+        some other graphic instruction
+
+      
+******************************************************
+instructions
+******************************************************
+
+op. type: 00 
+Data Transfer
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
+ld M(rs) DONE
+opt op  rd  K   rs
+00  0   0   0   00000000000
+
+
+ld K() BUG #Gotta modify the inst.cylce to check for an instruction in the IR earlier in the process so i can then specify where exactly are the 11 bits from the constant
+
+opt op  rd  K   const
+00  0   0   1   00000000000
+
+st M(rd) DONE
+opt op  N/A N/A rd
+00  1   0   0   00000000000
+
+
+op. type: 01 
+Arithmetic & logic
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
+add
+opt op   N/A
+01  0000 0000000000
+
+sub
+opt op   N/A
+01  0001 0000000000
+
+mul
+opt op   N/A
+01  0010 0000000000
+
+div
+opt op   N/A
+01  0011 0000000000
+
+rshift
+opt op   N/A
+01  0100 0000000000
+
+lshift
+opt op   N/A
+01  0101 0000000000
+
+or
+opt op   N/A
+01  0101 0000000000
+
+and
+opt op   N/A
+01  0101 0000000000
+
+not
+opt op   rd N/A
+01  0101 0  000000000
+
+not
+opt op   rd N/A
+01  0101 1  000000000
+
+abs
+opt op   rd N/A
+01  0101 0  000000000
+
+abs
+opt op   rd N/A
+01  0101 1  000000000
+
+op. type: 10 
+Branch
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
+
+call
+opt op  rd
+10  000 00000000000
+
+jump
+opt op  rd
+10  001 00000000000
+
+ba
+opt op  rd
+10  010 00000000000
+
+be
+opt op  rd
+10  011 00000000000
+
+bneg
+opt op  rd
+10  100 00000000000
+
+bo
+opt op  rd
+10  101 00000000000
+
+
 ******************************************************
 mcfunction index
 ******************************************************
@@ -357,65 +569,6 @@ build 512 memory directions  'buildmemdirections512':
     builds 512 memory directions
 
 ******************************************************
-instruction formats TODO
-******************************************************
-    instruction word length: 16 bits
-
-    ·Arithmetic & logic instructions:
-
-    ·data transfer instructions:
-
-    ·branch instructions:
-        call
-        jumpl
-        ba
-        be
-        bo
-        bneg
-    ·I/O:
-        read number 'rn'
-        read char 'rc'
-        read string 'rs'
-        print string 'ps'
-        print number 'ps'
-        
-        some other graphic instruction/s
-
-******************************************************
-instruction set
-******************************************************
-·Arithmetic & logic instructions:
-        add
-        sub
-        mul
-        div
-        rshift
-        lshift
-        abs
-        or
-        and
-        not
-        c2
-    ·data transfer instructions:
-        st
-        ld
-    ·branch instructions:
-        call
-        jumpl
-        ba
-        be
-        bo
-        bneg
-    ·I/O:
-        read number 'rn'
-        read char 'rc'
-        read string 'rs'
-        print string 'ps'
-        print number 'ps'
-        
-        some other graphic instruction
-
-******************************************************
 microprogram format
 ******************************************************
 
@@ -433,6 +586,7 @@ microprogram format
         stone block under AS of the mcfunction that has just finished execution.
 
 
+
 ******************************************************
 Arithmetic details
 ******************************************************
@@ -444,103 +598,4 @@ Arithmetic details
             'op2c2'
             fd
         
-        
-******************************************************
-instructions
-******************************************************
-
-op. type: 00 
-Data Transfer
-¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
-ld M(rs)
-opt op  rd  K   rs
-00  0   0   0   00000000000
-
-ld K()
-opt op  rd  K   const
-00  0   0   1   00000000000
-
-st
-opt op  N/A N/A rd
-00  1   0   0   00000000000
-
-
-op. type: 01 
-Arithmetic & logic
-¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
-add
-opt op   N/A
-01  0000 0000000000
-
-sub
-opt op   N/A
-01  0001 0000000000
-
-mul
-opt op   N/A
-01  0010 0000000000
-
-div
-opt op   N/A
-01  0011 0000000000
-
-rshift
-opt op   N/A
-01  0100 0000000000
-
-lshift
-opt op   N/A
-01  0101 0000000000
-
-or
-opt op   N/A
-01  0101 0000000000
-
-and
-opt op   N/A
-01  0101 0000000000
-
-not
-opt op   rd N/A
-01  0101 0  000000000
-
-not
-opt op   rd N/A
-01  0101 1  000000000
-
-abs
-opt op   rd N/A
-01  0101 0  000000000
-
-abs
-opt op   rd N/A
-01  0101 0  000000000
-
-op. type: 10 
-Branch
-¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
-
-call
-opt op  rd
-10  000 00000000000
-
-jump
-opt op  rd
-10  001 00000000000
-
-ba
-opt op  rd
-10  010 00000000000
-
-be
-opt op  rd
-10  011 00000000000
-
-bneg
-opt op  rd
-10  100 00000000000
-
-bo
-opt op  rd
-10  101 00000000000
-
+  
