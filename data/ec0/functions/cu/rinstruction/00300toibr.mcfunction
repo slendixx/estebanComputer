@@ -1,3 +1,4 @@
+execute at 0-1-0-0-7 run setblock ~ ~-1 ~ minecraft:black_wool destroy
 # Link from 0-0-3-0-... to 0-1-0-3-...
 # bit 0
 execute at 0-0-3-0-10 if block ~ ~-1 ~ minecraft:black_wool run execute at 0-1-0-3-0 run setblock ~ ~-1 ~ minecraft:black_wool destroy

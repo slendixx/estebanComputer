@@ -75,6 +75,7 @@ CU
         5: SUBRUTINE
         6: IBR
             this state register determines whether or not there is an instruction in the IBR register. a value of 0x0000 in the IBR means there's no instruction there.
+        7: EXECUTING IBR
     1: PC
         0: bit-lvl register pointer nº0
         ...
@@ -95,6 +96,7 @@ CU
         0: bit-lvl register pointer nº0
         ...
         9: bit-lvl register pointer nº9
+    
 
 
 0-1-1: Instruction cycle:
@@ -169,39 +171,30 @@ CU
             # wait
         }
 
-    5: 
-        0: 'runadd'
-    6: 
-        0: 'runadd'
-    7: 
-        0: 'runadd'
-    8: 
-        0: 'runadd'
-    9: 
-        0: 'runadd'
-    a: 
-        0: 'runadd'
-    10: 
-        0: 'runadd'
-    5: 
-        0: 'runadd'
-    5: 
-        0: 'runadd'
-    5: 
-        0: 'runadd'
-    5: 
-        0: 'runadd'
-    5: 
-        0: 'runadd'
-    5: 
-        0: 'runadd'
-    5: 
-        0: 'runadd'
-    5: 
-        0: 'runadd'
-    5: 
-        0: 'runadd'
-    
+    5: call
+        0: 'pctosubrreturn'
+        1: 'disptopcincamount'
+    6: jump
+        0: 'subrreturntopc'
+        1: 'disptopcincamount'
+    7: ba
+        0: 'disptopcincamount'
+    8:  be
+        0: 'ifz'{
+            1: 'disptopcincamount'
+        }
+    9: bn
+        0: 'ifn'{
+            1: 'disptopcincamount'
+        }
+    a: bo
+        0: 'ifo'{
+            1: 'disptopcincamount'
+        }
+    10: bc
+        0: 'ifc'{
+            1: 'disptopcincamount'
+        }
 ALU
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
 0-2-0: registers
@@ -257,6 +250,12 @@ ALU
         0: 'runop2equalsresult'
     13 'clearcarry':
         0: 'runclearcarry'
+0-2-1: processor state register
+    0-0: condition code 'z': Result was 0 
+    0-1: condition code 'n': Result was negative 
+    0-2: condition code 'o': Result caused an overflow 
+    0-3: condition code 'c': carry was produced 
+
 
 Memory
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
@@ -450,55 +449,47 @@ opt op   N/A
 
 or
 opt op   N/A
-01  0101 0000000000
+01  0110 0000000000
 
 and
 opt op   N/A
-01  0101 0000000000
+01  0111 0000000000
 
-not
-opt op   rd N/A
-01  0101 0  000000000
-
-not
-opt op   rd N/A
-01  0101 1  000000000
-
-abs
-opt op   rd N/A
-01  0101 0  000000000
-
-abs
-opt op   rd N/A
-01  0101 1  000000000
+not0
+opt op   N/A
+01  1000 0000000000
 
 op. type: 10 
 Branch
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
 
 call
-opt op  rd
+opt op  disp
 10  000 00000000000
 
 jump
-opt op  rd
+opt op  disp
 10  001 00000000000
 
 ba
-opt op  rd
+opt op  disp
 10  010 00000000000
 
 be
-opt op  rd
+opt op  disp
 10  011 00000000000
 
 bneg
-opt op  rd
+opt op  disp
 10  100 00000000000
 
 bo
-opt op  rd
+opt op  disp
 10  101 00000000000
+
+bc
+opt op  disp
+10  110 00000000000
 
 
 ******************************************************
