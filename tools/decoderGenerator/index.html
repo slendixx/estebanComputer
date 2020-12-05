@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Decoder Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div>
+      <h2>Coordinates for decoder input bit 0</h2>
+      <label for=""
+        >X: <input type="number" class="inputdir" value="-12"
+      /></label>
+      <br />
+      <label for=""
+        >Y: <input type="number" class="inputdir" value="16"
+      /></label>
+      <br />
+      <label for=""
+        >Z: <input type="number" class="inputdir" value="-1"
+      /></label>
+      <br />
+      <label for=""
+        >Input register width:
+        <input type="number" class="inputdir" /> (bits)</label
+      >
+      <br />
+    </div>
+    <div>
+      <h2>Coordinates for decoder first result</h2>
+      <label for=""
+        >X: <input type="number" class="decoutput" value="8"
+      /></label>
+      <br />
+      <label for=""
+        >Y: <input type="number" class="decoutput" value="20"
+      /></label>
+      <br />
+      <label for=""
+        >Z: <input type="number" class="decoutput" value="-1"
+      /></label>
+      <br />
+    </div>
+    <div>
+      <button id="generate">Generate decoder</button>
+      <br />
+      <textarea name="" id="result" cols="30" rows="10"></textarea>
+      <br />
+      <button id="copy">Copy to clipboard</button>
+      <br />
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
