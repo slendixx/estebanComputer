@@ -8,7 +8,23 @@
   </head>
   <body>
     <h2>Source Code</h2>
-    <textarea name="" id="" cols="80" rows="20"></textarea>
+    <textarea name="" id="" cols="80" rows="20">
+      #These lines will be ignored
+      #I still write the exclamation marks
+      #Just to be consistent with comments
+      
+      .beg				#
+      .org	1			#
+      main:	ld	op1	x	//	ld	op2	y#
+      #Some random comment
+      add		          //		st 	z #
+      .org	100			#
+      x:	25				#
+      y:	36				#
+      z:	49				#
+      .end				#
+</textarea
+    >
     <p id="output">Ready.</p>
     <h2>Machine Code</h2>
     <button id="assemble">Assemble</button>

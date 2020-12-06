@@ -1,15 +1,14 @@
-!These lines will be ignored
-!I still write the exclamation marks
-!Just to be consistent with comments
+#These lines will be ignored
+#I still write the exclamation marks
+#Just to be consistent with comments
 
-.beg				!
-.org	1			!
-main:	ld	op1	x	!
-	ld	op2	y		!
-	add				!
-	st 	z			!
-.org	a			!
-x:	25				!
-y:	36				!
-z:	49				!
-.end				!
+.beg				#
+.org	1			#
+main:	ld	op1	x	//	ld	op2	y		#
+					#
+	add		//		st 	z			#
+.org	100			#
+x:	25				#
+y:	36				#
+z:	49				#
+.end				#
