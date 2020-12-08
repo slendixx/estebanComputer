@@ -8,30 +8,57 @@
   </head>
   <body>
     <h2>Source Code</h2>
-    <textarea name="" id="" cols="80" rows="20">
-      #These lines will be ignored
-      #I still write the exclamation marks
-      #Just to be consistent with comments
-      
-      .beg				#
-      .org	1			#
-      main:	ld	op1	x	//	ld	op2	y#
-      #Some random comment
-      add		          //		st 	z #
-      .org	100			#
-      x:	25				#
-      y:	36				#
-      z:	49				#
-      .end				#
+    <textarea name="" id="" cols="1" rows="20" class="source lines" disabled>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+    </textarea>
+    <textarea name="" id="" cols="80" rows="20" class="source">
+#These lines will be ignored
+#I still write the exclamation marks
+#Just to be consistent with comments
+
+.beg				#
+.org	1			#
+  main:	lda	op1	x	//	lda	op2	y#
+                  #Some random comment
+  add		          //		st 	z #
+.org	100			#
+  x:	25				#
+  y:	36				#
+  z:	49				#
+.end				#
 </textarea
     >
-    <p id="output">Ready.</p>
+    <p id="feedback">Ready.</p>
     <h2>Machine Code</h2>
     <button id="assemble">Assemble</button>
     <textarea name="" id="" cols="80" rows="10"></textarea>
     <h2>loader.mcfunction</h2>
-    <button id="loader">Generate loader.mcfunction</button>
     <textarea name="" id="" cols="80" rows="10"></textarea>
+    <button id="copy">Copy to clipboard</button>
     <script src="script.js"></script>
   </body>
 </html>
