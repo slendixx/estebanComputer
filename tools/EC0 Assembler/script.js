@@ -27,68 +27,72 @@ function parse(source) {
   }
 }
 function determineCase(tokens, line) {
-  if (isBeg(tokens.length === 1 && tokens[0])) {
-    console.log(`${line + 1}: ` + ".beg");
+  if (isBeg(tokens.length === 1 && isBeg(tokens[0]))) {
+    // console.log(`${line + 1}: ` + ".beg");
+    translateBeg(tokens[0]);
   } else if (tokens.length === 1 && isEnd(tokens[0])) {
-    console.log(`${line + 1}: ` + ".end");
+    // console.log(`${line + 1}: ` + ".end");
+    translateEnd(tokens[0]);
   } else if (tokens.length === 2 && isBeg(tokens[0])) {
-    console.log(`${line + 1}: ` + ".beg \\s");
+    // console.log(`${line + 1}: ` + ".beg \\s");
+    translateBeg(tokens[0]);
   } else if (tokens.length === 2 && isEnd(tokens[0])) {
-    console.log(`${line + 1}: ` + ".end \\s");
+    // console.log(`${line + 1}: ` + ".end \\s");
+    translateEnd(tokens[0]);
   } else if (tokens.length === 2 && isOrg(tokens[0]) && isConst(tokens[1])) {
-    console.log(`${line + 1}: ` + ".org arg");
+    // console.log(`${line + 1}: ` + ".org arg");
   } else if (tokens.length === 2 && isNoArgInstruction(tokens[1])) {
-    console.log(`${line + 1}: ` + "\\s noArgInst");
+    // console.log(`${line + 1}: ` + "\\s noArgInst");
   } else if (tokens.length === 2 && isConst(tokens[1])) {
-    console.log(`${line + 1}: ` + "\\s const");
+    // console.log(`${line + 1}: ` + "\\s const");
   }
   //Gotta come up with unique conditions for these cases
   else if (tokens.length === 3 && !isOrg(tokens[0]) && isConst(tokens[1])) {
-    console.log(`${line + 1}: ` + "\\s const \\s");
+    // console.log(`${line + 1}: ` + "\\s const \\s");
   } else if (tokens.length === 3 && isLabel(tokens[1]) && isConst(tokens[2])) {
-    console.log(`${line + 1}: ` + "\\s label: const");
+    // console.log(`${line + 1}: ` + "\\s label: const");
   } else if (tokens.length === 3 && isOrg(tokens[0]) && isConst(tokens[1])) {
-    console.log(`${line + 1}: ` + ".org arg \\s");
+    // console.log(`${line + 1}: ` + ".org arg \\s");
   } else if (tokens.length === 3 && isNoArgInstruction(tokens[1])) {
-    console.log(`${line + 1}: ` + "\\s noArgInst \\s");
+    // console.log(`${line + 1}: ` + "\\s noArgInst \\s");
   } else if (tokens.length === 3 && isSingleArgInstruction(tokens[1])) {
-    console.log(`${line + 1}: ` + "\\s singleArgInst arg");
+    // console.log(`${line + 1}: ` + "\\s singleArgInst arg");
   } else if (
     tokens.length === 4 &&
     isLabel(tokens[1]) &&
     isConst([tokens[2]])
   ) {
-    console.log(`${line + 1}: ` + "\\s label: const \\s");
+    // console.log(`${line + 1}: ` + "\\s label: const \\s");
   } else if (tokens.length === 4 && isSingleArgInstruction(tokens[1])) {
-    console.log(`${line + 1}: ` + "\\s singleArgInst arg \\s");
+    // console.log(`${line + 1}: ` + "\\s singleArgInst arg \\s");
   } else if (tokens.length === 4 && isDoubleArgInstruction(tokens[1])) {
-    console.log(`${line + 1}: ` + "\\s doubleArgInst arg1 arg2");
+    // console.log(`${line + 1}: ` + "\\s doubleArgInst arg1 arg2");
   } else if (
     tokens.length === 4 &&
     isLabel(tokens[1]) &&
     isSingleArgInstruction(tokens[2])
   ) {
-    console.log(`${line + 1}: ` + "\\s label: singleArgInst arg");
+    // console.log(`${line + 1}: ` + "\\s label: singleArgInst arg");
   } else if (tokens.length === 5 && isDoubleArgInstruction(tokens[1])) {
-    console.log(`${line + 1}: ` + "\\s doubleArgInst arg1 arg2 \\s");
+    // console.log(`${line + 1}: ` + "\\s doubleArgInst arg1 arg2 \\s");
   } else if (
     tokens.length === 5 &&
     isLabel(tokens[1]) &&
     isSingleArgInstruction(tokens[2])
   ) {
-    console.log(`${line + 1}: ` + "\\s label: singleArgInst arg \\s");
+    // console.log(`${line + 1}: ` + "\\s label: singleArgInst arg \\s");
   } else if (
     tokens.length === 5 &&
     isLabel(tokens[1]) &&
     isDoubleArgInstruction(tokens[2])
   ) {
-    console.log(`${line + 1}: ` + "\\s label: doubleArgInst arg1 arg2");
+    // console.log(`${line + 1}: ` + "\\s label: doubleArgInst arg1 arg2");
   } else if (
     tokens.length === 6 &&
     isLabel(tokens[1]) &&
     isDoubleArgInstruction(tokens[2])
   ) {
-    console.log(`${line + 1}: ` + "\\s label: doubleArgInst arg1 arg2 \\s");
+    // console.log(`${line + 1}: ` + "\\s label: doubleArgInst arg1 arg2 \\s");
   } else {
     updateFeedback(`Syntax error at line: ${line + 1}.`);
   }
@@ -156,7 +160,7 @@ function addSymbol(table, { id = "null", size = -1, address = -1 }) {
     address: address,
   });
 }
-function translate() {}
+function translate(translateCase) {}
 
 const [, sourceCode, machine, loader] = document.querySelectorAll("textarea");
 const [btnAssemble, btnCopy] = document.querySelectorAll("button");
