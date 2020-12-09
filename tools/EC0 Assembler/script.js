@@ -17,82 +17,128 @@ function parse(source) {
       [line, right] = line.split("//");
       tokens = [...line.split(/\s+/)];
       tokensRight = [...right.split(/\s+/)];
-      determineCase(tokens, l);
-      determineCase(tokensRight, l);
+      determineCase(tokens, l, false);
+      determineCase(tokensRight, l, true);
     } else {
       tokens = [...line.split(/\s+/)];
-      determineCase(tokens, l);
+      determineCase(tokens, l, false);
     }
-    //Determine with what type of line we're dealing with
+    ++programPointer;
   }
 }
-function determineCase(tokens, line) {
+function determineCase(tokens, line, isRightInstruction) {
   if (isBeg(tokens.length === 1 && isBeg(tokens[0]))) {
     // console.log(`${line + 1}: ` + ".beg");
-    translateBeg(tokens[0]);
   } else if (tokens.length === 1 && isEnd(tokens[0])) {
     // console.log(`${line + 1}: ` + ".end");
-    translateEnd(tokens[0]);
   } else if (tokens.length === 2 && isBeg(tokens[0])) {
     // console.log(`${line + 1}: ` + ".beg \\s");
-    translateBeg(tokens[0]);
   } else if (tokens.length === 2 && isEnd(tokens[0])) {
     // console.log(`${line + 1}: ` + ".end \\s");
-    translateEnd(tokens[0]);
   } else if (tokens.length === 2 && isOrg(tokens[0]) && isConst(tokens[1])) {
     // console.log(`${line + 1}: ` + ".org arg");
+    setProgramPointer(Number(tokens[1]));
   } else if (tokens.length === 2 && isNoArgInstruction(tokens[1])) {
     // console.log(`${line + 1}: ` + "\\s noArgInst");
+    if (!isRightInstruction) {
+      incCurrentSymbolSize();
+    }
   } else if (tokens.length === 2 && isConst(tokens[1])) {
     // console.log(`${line + 1}: ` + "\\s const");
+    if (!isRightInstruction) {
+      incCurrentSymbolSize();
+    }
   }
   //Gotta come up with unique conditions for these cases
   else if (tokens.length === 3 && !isOrg(tokens[0]) && isConst(tokens[1])) {
     // console.log(`${line + 1}: ` + "\\s const \\s");
+    if (!isRightInstruction) {
+      incCurrentSymbolSize();
+    }
   } else if (tokens.length === 3 && isLabel(tokens[1]) && isConst(tokens[2])) {
     // console.log(`${line + 1}: ` + "\\s label: const");
+    if(!isRightInstruction){
+      addSymbol();
+      setCurrentSymbol()
+    }
   } else if (tokens.length === 3 && isOrg(tokens[0]) && isConst(tokens[1])) {
     // console.log(`${line + 1}: ` + ".org arg \\s");
+    setProgramPointer(Number(tokens[1]));
   } else if (tokens.length === 3 && isNoArgInstruction(tokens[1])) {
     // console.log(`${line + 1}: ` + "\\s noArgInst \\s");
+    if (!isRightInstruction) {
+      incCurrentSymbolSize();
+    }
   } else if (tokens.length === 3 && isSingleArgInstruction(tokens[1])) {
     // console.log(`${line + 1}: ` + "\\s singleArgInst arg");
+    if (!isRightInstruction) {
+      incCurrentSymbolSize();
+    }
   } else if (
     tokens.length === 4 &&
     isLabel(tokens[1]) &&
     isConst([tokens[2]])
   ) {
     // console.log(`${line + 1}: ` + "\\s label: const \\s");
+    if (!isRightInstruction) {
+      addSymbol();
+      setCurrentSymbol()
+    }
   } else if (tokens.length === 4 && isSingleArgInstruction(tokens[1])) {
     // console.log(`${line + 1}: ` + "\\s singleArgInst arg \\s");
+    if (!isRightInstruction) {
+      incCurrentSymbolSize();
+    }
   } else if (tokens.length === 4 && isDoubleArgInstruction(tokens[1])) {
     // console.log(`${line + 1}: ` + "\\s doubleArgInst arg1 arg2");
+    if (!isRightInstruction) {
+      incCurrentSymbolSize();
+    }
   } else if (
     tokens.length === 4 &&
     isLabel(tokens[1]) &&
     isSingleArgInstruction(tokens[2])
   ) {
     // console.log(`${line + 1}: ` + "\\s label: singleArgInst arg");
+    if (!isRightInstruction) {
+      addSymbol();
+      setCurrentSymbol()
+    }
   } else if (tokens.length === 5 && isDoubleArgInstruction(tokens[1])) {
     // console.log(`${line + 1}: ` + "\\s doubleArgInst arg1 arg2 \\s");
+    if (!isRightInstruction) {
+      incCurrentSymbolSize();
+    }
   } else if (
     tokens.length === 5 &&
     isLabel(tokens[1]) &&
     isSingleArgInstruction(tokens[2])
   ) {
     // console.log(`${line + 1}: ` + "\\s label: singleArgInst arg \\s");
+    if (!isRightInstruction) {
+      addSymbol();
+      setCurrentSymbol()
+    }
   } else if (
     tokens.length === 5 &&
     isLabel(tokens[1]) &&
     isDoubleArgInstruction(tokens[2])
   ) {
     // console.log(`${line + 1}: ` + "\\s label: doubleArgInst arg1 arg2");
+    if (!isRightInstruction) {
+      addSymbol();
+      setCurrentSymbol()
+    }
   } else if (
     tokens.length === 6 &&
     isLabel(tokens[1]) &&
     isDoubleArgInstruction(tokens[2])
   ) {
     // console.log(`${line + 1}: ` + "\\s label: doubleArgInst arg1 arg2 \\s");
+    if (!isRightInstruction) {
+      addSymbol();
+      setCurrentSymbol()
+    }
   } else {
     updateFeedback(`Syntax error at line: ${line + 1}.`);
   }
@@ -153,14 +199,27 @@ function isLabel(token) {
 function updateFeedback(msg) {
   feedback.textContent = msg;
 }
-function addSymbol(table, { id = "null", size = -1, address = -1 }) {
-  table.push({
+function setProgramPointer() {}
+function incCurrentSymbolSize() {}
+function addSymbol({ id = "null", size = -1, address = -1 }) {
+  symbolTable.push({
     id: id,
     size: size,
     address: address,
   });
 }
-function translate(translateCase) {}
+function setCurrentSymbol(id){
+  for(let s = 0; s < symbolTable.length.s++){
+    
+  }
+}
+
+function translateBeg(tokens) {}
+function translateEnd(tokens) {}
+function translateOrg(tokens) {}
+function translateNoArgInstruction(tokens) {}
+function translateSingleArgInstruction(tokens) {}
+function translateDoubleArgInstruction(tokens) {}
 
 const [, sourceCode, machine, loader] = document.querySelectorAll("textarea");
 const [btnAssemble, btnCopy] = document.querySelectorAll("button");
@@ -169,7 +228,7 @@ const feedback = document.getElementById("feedback");
 btnAssemble.addEventListener("click", assemble);
 
 const symbolTable = [];
-let programAddressPointer = 0;
+let programPointer = 0;
 
 // Tokenize string at any kind of whitespace
 // const str = "abc    def ghi";
