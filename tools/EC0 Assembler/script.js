@@ -10,7 +10,6 @@ function parse(source) {
   let tokensRight = [];
   let line = "";
   let right = "";
-  let programPointerIncAmount;
   for (let l = 0; l < source.length; l++) {
     line = source[l];
     [line] = line.split("\n");
@@ -31,6 +30,7 @@ function parse(source) {
 function determineCase(tokens, line, rightInstruction, isRightInstruction) {
   let programPointerIncAmount = 1;
   let increaseProgramPointer = true;
+  console.log(`line: ${line}, program pointer: ${programPointer}`);
   //if (line === 6) debugger;
   // console.log(
   //   `line: ${line}, tokens: ${tokens}, ${
@@ -324,14 +324,15 @@ function determineCase(tokens, line, rightInstruction, isRightInstruction) {
   }
 
   //Increase  the program pointer before parsing the next line
-  if (rightInstruction && isRightInstruction)
+  if (rightInstruction && isRightInstruction) {
     if (increaseProgramPointer)
       //If there is an instructtion to the right, wait for it's parsing to increase the program pointer
       incProgramPointer(programPointerIncAmount);
-    else if (!rightInstruction)
-      if (increaseProgramPointer)
-        //If there's no instruction to the right, simply increase the program pointer.
-        incProgramPointer(programPointerIncAmount);
+  } else if (!rightInstruction && !isRightInstruction) {
+    if (increaseProgramPointer)
+      //If there's no instruction to the right, simply increase the program pointer.
+      incProgramPointer(programPointerIncAmount);
+  }
 }
 function isBeg(token) {
   return token === ".beg" ? true : false;
@@ -389,7 +390,6 @@ function updateFeedback(msg) {
   feedback.textContent = msg;
 }
 function incProgramPointer(incAmount) {
-  debugger;
   if (incAmount < 0)
     updateFeedback(
       "The argument for .org must be greater than or equal to 0 (zero)."
