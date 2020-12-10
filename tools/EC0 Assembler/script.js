@@ -1,9 +1,42 @@
+// TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// I forgot to implement these parse cases:
+// \\s label: noArgInstruction
+// \\s label: noArgInstruction \\s
+
+// Since both of these start with a label at tokens[1],
+// I must also check if they're the definition of an already existing symbol.
+
+// if (!isRightInstruction && !isOnSymbolTable(tokens[1])) {
+//   addSymbol({
+//     id: tokens[1],
+//     address: programPointer,
+//     defined: true,
+//     size: 1,
+//   });
+//   setCurrentSymbol(symbolTable[symbolTable.length - 1]);
+// }
+// else if (!isRightInstruction && isOnSymbolTable(tokens[1])){
+//   let symbol = lookForSymbol(tokens[1]);
+//   symbol.defined = true;
+//   symbol.size = 1;
+//   symbol.address = programPointer;
+// }
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 function assemble() {
+  symbolTable = [];
+  programPointer = 0;
+  currentSymbol = {};
+  updateFeedback("Ready.");
   //Spread the source code line by line
   const source = [...sourceCode.value.split("\n")];
   parse(source);
-
+  //Once parsing is complete  i have a fully formed symbol table
+  testForUndefinedSymbols(symbolTable);
   console.table(symbolTable);
+  console.log(`Translation begin line: ${beginLine + 1}`);
+  console.log(`Translation end line: ${endLine + 1}`);
 }
 function parse(source) {
   let tokens = [];
@@ -30,7 +63,6 @@ function parse(source) {
 function determineCase(tokens, line, rightInstruction, isRightInstruction) {
   let programPointerIncAmount = 1;
   let increaseProgramPointer = true;
-  console.log(`line: ${line}, program pointer: ${programPointer}`);
   //if (line === 6) debugger;
   // console.log(
   //   `line: ${line}, tokens: ${tokens}, ${
@@ -83,7 +115,7 @@ function determineCase(tokens, line, rightInstruction, isRightInstruction) {
         defined: true,
         size: 1,
       });
-      setCurrentSymbol(symbolTable[length - 1]);
+      setCurrentSymbol(symbolTable[symbolTable.length - 1]);
     } else if (!isRightInstruction && isOnSymbolTable(tokens[1])) {
       let symbol = lookForSymbol(tokens[1]);
       if (!symbol.defined) {
@@ -103,6 +135,7 @@ function determineCase(tokens, line, rightInstruction, isRightInstruction) {
   } else if (tokens.length === 3 && isNoArgInstruction(tokens[1])) {
     // console.log(`${line + 1}: ` + "\\s noArgInst \\s");
     if (!isRightInstruction) {
+      console.log(line + " " + currentSymbol);
       incCurrentSymbolSize(currentSymbol);
     }
   } else if (tokens.length === 3 && isSingleArgInstruction(tokens[1])) {
@@ -134,7 +167,7 @@ function determineCase(tokens, line, rightInstruction, isRightInstruction) {
         defined: true,
         size: 1,
       });
-      setCurrentSymbol(symbolTable[length - 1]);
+      setCurrentSymbol(symbolTable[symbolTable.length - 1]);
     } else if (!isRightInstruction && isOnSymbolTable(tokens[1])) {
       let symbol = lookForSymbol(tokens[1]);
       symbol.defined = true;
@@ -192,8 +225,14 @@ function determineCase(tokens, line, rightInstruction, isRightInstruction) {
         defined: true,
         size: 1,
       });
-      setCurrentSymbol(symbolTable[length - 1]);
+      setCurrentSymbol(symbolTable[symbolTable.length - 1]);
+    } else if (!isRightInstruction && isOnSymbolTable(tokens[1])) {
+      let symbol = lookForSymbol(tokens[1]);
+      symbol.defined = true;
+      symbol.size = 1;
+      symbol.address = programPointer;
     }
+
     if (!isConst(tokens[3])) {
       if (!isOnSymbolTable(tokens[3])) {
         addSymbol({
@@ -240,7 +279,12 @@ function determineCase(tokens, line, rightInstruction, isRightInstruction) {
         defined: true,
         size: 1,
       });
-      setCurrentSymbol(symbolTable[length - 1]);
+      setCurrentSymbol(symbolTable[symbolTable.length - 1]);
+    } else if (!isRightInstruction && isOnSymbolTable(tokens[1])) {
+      let symbol = lookForSymbol(tokens[1]);
+      symbol.defined = true;
+      symbol.size = 1;
+      symbol.address = programPointer;
     }
     if (!isConst(tokens[3])) {
       if (!isOnSymbolTable(tokens[3])) {
@@ -265,7 +309,12 @@ function determineCase(tokens, line, rightInstruction, isRightInstruction) {
         defined: true,
         size: 1,
       });
-      setCurrentSymbol(symbolTable[length - 1]);
+      setCurrentSymbol(symbolTable[symbolTable.length - 1]);
+    } else if (!isRightInstruction && isOnSymbolTable(tokens[1])) {
+      let symbol = lookForSymbol(tokens[1]);
+      symbol.defined = true;
+      symbol.size = 1;
+      symbol.address = programPointer;
     }
     if (tokens[3] !== "op1" && tokens[3] !== "op2") {
       updateFeedback(
@@ -299,7 +348,12 @@ function determineCase(tokens, line, rightInstruction, isRightInstruction) {
         defined: true,
         size: 1,
       });
-      setCurrentSymbol(symbolTable[length - 1]);
+      setCurrentSymbol(symbolTable[symbolTable.length - 1]);
+    } else if (!isRightInstruction && isOnSymbolTable(tokens[1])) {
+      let symbol = lookForSymbol(tokens[1]);
+      symbol.defined = true;
+      symbol.size = 1;
+      symbol.address = programPointer;
     }
     if (tokens[3] !== "op1" && tokens[3] !== "op2") {
       updateFeedback(
@@ -407,7 +461,7 @@ function addSymbol({ id = "null", size = -1, address = -1, defined = false }) {
     address: address,
     defined: defined,
   });
-  if (symbolTable.length === 1) currentSymbol = symbolTable[0];
+  // if (symbolTable.length === 1) currentSymbol = symbolTable[0];
 }
 function setCurrentSymbol(symbol) {
   // if (!lookForSymbol(id)) for (let s = 0; s < symbolTable.length; s++) {}
@@ -432,6 +486,17 @@ function isOnSymbolTable(id) {
   return false;
 }
 
+function testForUndefinedSymbols(symbolTable) {
+  let symbol;
+  for (let s = 0; s < symbolTable.length; s++) {
+    symbol = symbolTable[s];
+    if (!symbol.defined) {
+      updateFeedback(`Error: Undefined symbol "${symbol.id}".`);
+      return;
+    }
+  }
+}
+
 function translateBeg(tokens) {}
 function translateEnd(tokens) {}
 function translateOrg(tokens) {}
@@ -446,9 +511,9 @@ const feedback = document.getElementById("feedback");
 btnAssemble.addEventListener("click", assemble);
 
 //Global variables
-const symbolTable = [];
-let programPointer = 0;
-let currentSymbol = {};
+let symbolTable;
+let programPointer;
+let currentSymbol;
 let beginLine;
 let endLine;
 
