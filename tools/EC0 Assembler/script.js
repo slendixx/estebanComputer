@@ -1,29 +1,3 @@
-// TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// I forgot to implement these parse cases:
-// \\s label: noArgInstruction
-// \\s label: noArgInstruction \\s
-
-// Since both of these start with a label at tokens[1],
-// I must also check if they're the definition of an already existing symbol.
-
-// if (!isRightInstruction && !isOnSymbolTable(tokens[1])) {
-//   addSymbol({
-//     id: tokens[1],
-//     address: programPointer,
-//     defined: true,
-//     size: 1,
-//   });
-//   setCurrentSymbol(symbolTable[symbolTable.length - 1]);
-// }
-// else if (!isRightInstruction && isOnSymbolTable(tokens[1])){
-//   let symbol = lookForSymbol(tokens[1]);
-//   symbol.defined = true;
-//   symbol.size = 1;
-//   symbol.address = programPointer;
-// }
-
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 function assemble() {
   symbolTable = [];
   programPointer = 0;
@@ -37,6 +11,11 @@ function assemble() {
   console.table(symbolTable);
   console.log(`Translation begin line: ${beginLine + 1}`);
   console.log(`Translation end line: ${endLine + 1}`);
+
+  if (feedback.textContent === "Ready.") {
+    //if no errors happened during parsing
+    translate(source);
+  }
 }
 function parse(source) {
   let tokens = [];
@@ -52,15 +31,20 @@ function parse(source) {
       [line, right] = line.split("//");
       tokens = [...line.split(/\s+/)];
       tokensRight = [...right.split(/\s+/)];
-      determineCase(tokens, l, true, false);
-      determineCase(tokensRight, l, true, true);
+      determineParseCase(tokens, l, true, false);
+      determineParseCase(tokensRight, l, true, true);
     } else {
       tokens = [...line.split(/\s+/)];
-      determineCase(tokens, l, false, false);
+      determineParseCase(tokens, l, false, false);
     }
   }
 }
-function determineCase(tokens, line, rightInstruction, isRightInstruction) {
+function determineParseCase(
+  tokens,
+  line,
+  rightInstruction,
+  isRightInstruction
+) {
   let programPointerIncAmount = 1;
   let increaseProgramPointer = true;
   //if (line === 6) debugger;
@@ -72,7 +56,7 @@ function determineCase(tokens, line, rightInstruction, isRightInstruction) {
   //   }, ${!isRightInstruction && !isOnSymbolTable(tokens[1])}`
   // );
 
-  if (isBeg(tokens.length === 1 && isBeg(tokens[0]))) {
+  if (tokens.length === 1 && isBeg(tokens[0])) {
     // console.log(`${line + 1}: ` + ".beg");
     beginLine = line;
     increaseProgramPointer = false;
@@ -152,6 +136,46 @@ function determineCase(tokens, line, rightInstruction, isRightInstruction) {
         });
       }
       //if the user referenced a symbol that is already on the table, do nothing
+    }
+  } else if (
+    tokens.length === 3 &&
+    isLabel(tokens[1]) &&
+    isNoArgInstruction(tokens[2])
+  ) {
+    // \\s label: noArgInstruction
+    if (!isRightInstruction && !isOnSymbolTable(tokens[1])) {
+      addSymbol({
+        id: tokens[1],
+        address: programPointer,
+        defined: true,
+        size: 1,
+      });
+      setCurrentSymbol(symbolTable[symbolTable.length - 1]);
+    } else if (!isRightInstruction && isOnSymbolTable(tokens[1])) {
+      let symbol = lookForSymbol(tokens[1]);
+      symbol.defined = true;
+      symbol.size = 1;
+      symbol.address = programPointer;
+    }
+  } else if (
+    tokens.length === 4 &&
+    isLabel(tokens[1]) &&
+    isNoArgInstruction(tokens[2])
+  ) {
+    // \\s label: noArgInstruction \\s
+    if (!isRightInstruction && !isOnSymbolTable(tokens[1])) {
+      addSymbol({
+        id: tokens[1],
+        address: programPointer,
+        defined: true,
+        size: 1,
+      });
+      setCurrentSymbol(symbolTable[symbolTable.length - 1]);
+    } else if (!isRightInstruction && isOnSymbolTable(tokens[1])) {
+      let symbol = lookForSymbol(tokens[1]);
+      symbol.defined = true;
+      symbol.size = 1;
+      symbol.address = programPointer;
     }
   } else if (
     tokens.length === 4 &&
@@ -496,7 +520,34 @@ function testForUndefinedSymbols(symbolTable) {
     }
   }
 }
-
+function translate(source) {
+  let tokens = [];
+  let tokensRight = [];
+  let line = "";
+  let right = "";
+  for (let l = beginLine; l < endLine; l++) {
+    line = source[l];
+    [line] = line.split("\n");
+    [line] = line.split("#");
+    if (line === "" || line === "\n" || /^\s+$/.test(line)) continue;
+    if (line.includes("//")) {
+      [line, right] = line.split("//");
+      tokens = [...line.split(/\s+/)];
+      tokensRight = [...right.split(/\s+/)];
+      determineTranslateCase(tokens, l, true, false);
+      determineTranslateCase(tokensRight, l, true, true);
+    } else {
+      tokens = [...line.split(/\s+/)];
+      determineTranslateCase(tokens, l, false, false);
+    }
+  }
+}
+function determineTranslateCase(
+  tokens,
+  line,
+  rightInstruction,
+  isRightInstruction
+) {}
 function translateBeg(tokens) {}
 function translateEnd(tokens) {}
 function translateOrg(tokens) {}
