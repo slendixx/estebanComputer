@@ -26,11 +26,11 @@ function parse(source) {
       tokens = [...line.split(/\s+/)];
       determineCase(tokens, l, false, false);
     }
-    ++programPointer;
   }
 }
 function determineCase(tokens, line, rightInstruction, isRightInstruction) {
-  programPointerIncAmount = 1;
+  let programPointerIncAmount = 1;
+  let increaseProgramPointer = true;
   //if (line === 6) debugger;
   // console.log(
   //   `line: ${line}, tokens: ${tokens}, ${
@@ -43,15 +43,19 @@ function determineCase(tokens, line, rightInstruction, isRightInstruction) {
   if (isBeg(tokens.length === 1 && isBeg(tokens[0]))) {
     // console.log(`${line + 1}: ` + ".beg");
     beginLine = line;
+    increaseProgramPointer = false;
   } else if (tokens.length === 1 && isEnd(tokens[0])) {
     // console.log(`${line + 1}: ` + ".end");
     endLine = line;
+    increaseProgramPointer = false;
   } else if (tokens.length === 2 && isBeg(tokens[0])) {
     // console.log(`${line + 1}: ` + ".beg \\s");
     beginLine = line;
+    increaseProgramPointer = false;
   } else if (tokens.length === 2 && isEnd(tokens[0])) {
     // console.log(`${line + 1}: ` + ".end \\s");
     endLine = line;
+    increaseProgramPointer = false;
   } else if (tokens.length === 2 && isOrg(tokens[0]) && isConst(tokens[1])) {
     // console.log(`${line + 1}: ` + ".org arg");
     programPointerIncAmount = Number(tokens[1]) - programPointer;
@@ -122,6 +126,7 @@ function determineCase(tokens, line, rightInstruction, isRightInstruction) {
     isConst([tokens[2]])
   ) {
     // console.log(`${line + 1}: ` + "\\s label: const \\s");
+    // debugger;
     if (!isRightInstruction && !isOnSymbolTable(tokens[1])) {
       addSymbol({
         id: tokens[1],
@@ -130,6 +135,11 @@ function determineCase(tokens, line, rightInstruction, isRightInstruction) {
         size: 1,
       });
       setCurrentSymbol(symbolTable[length - 1]);
+    } else if (!isRightInstruction && isOnSymbolTable(tokens[1])) {
+      let symbol = lookForSymbol(tokens[1]);
+      symbol.defined = true;
+      symbol.size = 1;
+      symbol.address = programPointer;
     }
   } else if (tokens.length === 4 && isSingleArgInstruction(tokens[1])) {
     // console.log(`${line + 1}: ` + "\\s singleArgInst arg \\s");
@@ -151,7 +161,7 @@ function determineCase(tokens, line, rightInstruction, isRightInstruction) {
     if (!isRightInstruction) {
       incCurrentSymbolSize(currentSymbol);
     }
-    if (tokens[2] !== "op1" || tokens[2] !== "op2") {
+    if (tokens[2] !== "op1" && tokens[2] !== "op2") {
       updateFeedback(
         `Syntax Error at line ${
           line + 1
@@ -199,7 +209,7 @@ function determineCase(tokens, line, rightInstruction, isRightInstruction) {
     if (!isRightInstruction) {
       incCurrentSymbolSize(currentSymbol);
     }
-    if (tokens[2] !== "op1" || tokens[2] !== "op2") {
+    if (tokens[2] !== "op1" && tokens[2] !== "op2") {
       updateFeedback(
         `Syntax Error at line ${
           line + 1
@@ -257,7 +267,7 @@ function determineCase(tokens, line, rightInstruction, isRightInstruction) {
       });
       setCurrentSymbol(symbolTable[length - 1]);
     }
-    if (tokens[3] !== "op1" || tokens[3] !== "op2") {
+    if (tokens[3] !== "op1" && tokens[3] !== "op2") {
       updateFeedback(
         `Syntax Error at line ${
           line + 1
@@ -291,7 +301,7 @@ function determineCase(tokens, line, rightInstruction, isRightInstruction) {
       });
       setCurrentSymbol(symbolTable[length - 1]);
     }
-    if (tokens[3] !== "op1" || tokens[3] !== "op2") {
+    if (tokens[3] !== "op1" && tokens[3] !== "op2") {
       updateFeedback(
         `Syntax Error at line ${
           line + 1
@@ -315,11 +325,13 @@ function determineCase(tokens, line, rightInstruction, isRightInstruction) {
 
   //Increase  the program pointer before parsing the next line
   if (rightInstruction && isRightInstruction)
-    //If there is an instructtion to the right, wait for it's parsing to increase the program pointer
-    incProgramPointer(programPointerIncAmount);
-  else if (!rightInstruction)
-    //If there's no instruction to the right, simply increase the program pointer.
-    incProgramPointer(programPointerIncAmount);
+    if (increaseProgramPointer)
+      //If there is an instructtion to the right, wait for it's parsing to increase the program pointer
+      incProgramPointer(programPointerIncAmount);
+    else if (!rightInstruction)
+      if (increaseProgramPointer)
+        //If there's no instruction to the right, simply increase the program pointer.
+        incProgramPointer(programPointerIncAmount);
 }
 function isBeg(token) {
   return token === ".beg" ? true : false;
@@ -377,6 +389,7 @@ function updateFeedback(msg) {
   feedback.textContent = msg;
 }
 function incProgramPointer(incAmount) {
+  debugger;
   if (incAmount < 0)
     updateFeedback(
       "The argument for .org must be greater than or equal to 0 (zero)."
@@ -384,32 +397,37 @@ function incProgramPointer(incAmount) {
   else programPointer += incAmount;
 }
 function incCurrentSymbolSize(symbol) {
-  ++symbol.size;
+  if (currentSymbol) ++symbol.size;
 }
 function addSymbol({ id = "null", size = -1, address = -1, defined = false }) {
+  const [buffer] = id.split(":");
   symbolTable.push({
-    id: id,
+    id: buffer,
     size: size,
     address: address,
     defined: defined,
   });
+  if (symbolTable.length === 1) currentSymbol = symbolTable[0];
 }
-function setCurrentSymbol(id) {
-  if (!lookForSymbol()) for (let s = 0; s < symbolTable.length; s++) {}
+function setCurrentSymbol(symbol) {
+  // if (!lookForSymbol(id)) for (let s = 0; s < symbolTable.length; s++) {}
+  currentSymbol = symbol;
 }
 function lookForSymbol(id) {
   let symbol;
+  const [buffer] = id.split(":");
   for (let s = 0; s < symbolTable.length; s++) {
     symbol = symbolTable[s];
-    if (symbol.id === id) return symbol;
+    if (symbol.id === buffer) return symbol;
   }
   return null;
 }
 function isOnSymbolTable(id) {
   let symbol;
+  const [buffer] = id.split(":");
   for (let s = 0; s < symbolTable.length; s++) {
     symbol = symbolTable[s];
-    if (symbol.id === id) return true;
+    if (symbol.id === buffer) return true;
   }
   return false;
 }
