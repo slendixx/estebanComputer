@@ -1,3 +1,5 @@
+//TODO test with negative numbers!!
+
 function assemble() {
   symbolTable = [];
   programPointer = 0;
@@ -549,8 +551,10 @@ function translate(source) {
       determineTranslateCase(tokens, l, false, false, output);
     }
   }
-  console.log(output.machineCode);
+  // console.log(output.machineCode);
+  machine.value = output.machineCode;
 }
+
 function determineTranslateCase(
   tokens,
   line,
@@ -1029,7 +1033,6 @@ function complementTo2(decimalNumber, minDigitAmount) {
   [, buffer] = buffer.split("-");
   buffer = Number(buffer);
   let digits = [...buffer.toString(2)];
-  console.log(digits);
   let binaryNumber = ``;
   for (let d = digits.length - 1; d >= 0; d--) {
     if (digits[d] === "1") {
