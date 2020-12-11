@@ -353,7 +353,7 @@ instruction formats TODO
         ba
         be
         bo
-        bneg
+        bn
     ·I/O:
         read number 'rn'
         read char 'rc'
@@ -387,7 +387,7 @@ instruction set
         ba
         be
         bo
-        bneg
+        bn
     ·I/O:
         read number 'rn'
         read char 'rc'
@@ -406,18 +406,28 @@ op. type: 00
 Data Transfer
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
 ld M(rs) DONE
-opt op  rd  K   rs
+opt op  rd  i   rs
 00  0   0   0   00000000000
 
+ld M(rs)
+opt op  rd  i   rs
+00  0   0   0   00000000000
 
-ld K() BUG #Gotta modify the inst.cylce to check for an instruction in the IR earlier in the process so i can then specify where exactly are the 11 bits from the constant
+ldi M(M(rs))
+opt op  rd  i   rs
+00  0   0   1   00000000000
 
-opt op  rd  K   const
+ldi M(M(rs))
+opt op  rd  i   rs
 00  0   0   1   00000000000
 
 st M(rd) DONE
-opt op  N/A N/A rd
+opt op  N/A i   rd
 00  1   0   0   00000000000
+
+st M(M(rd)) DONE
+opt op  N/A i   rd
+00  1   0   1   00000000000
 
 
 op. type: 01 
@@ -479,7 +489,7 @@ be
 opt op  disp
 10  011 00000000000
 
-bneg
+bn
 opt op  disp
 10  100 00000000000
 

@@ -42,13 +42,18 @@
 
 .beg				#
 .org	1			#
-  main:	lda	op1	x	//	lda	op2	y#
+  main:	ld	op1	x	//	ldi	op2	y#
                   #Some random comment
   add		          //		st 	z #
-.org	100			#
+  call subr
+.org 10
+  w:	49
+.org	15			#
   x:	25				#
   y:	36				#
   z:	49				#
+.org 20
+  subr: jump 1
 .end				#
 </textarea
     >
