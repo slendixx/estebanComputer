@@ -1,0 +1,37 @@
+# this program implments a LastInFirstOut data structure
+# It's purpose its to allow for dinamyc memory allocation
+
+.beg
+
+    #constant declarations
+	const0:	0
+    const1: 1
+
+    #variable declarations
+    heapSize:   0
+    heapFirstAddr:  768
+    heapLastAddr:   0	#this variable points to the last element on the heap
+    heapBuffer: 0
+
+    heapAdd:	ld	op1	heapSize	//  ld  op2 heapFirstAddr	#Calculate heap last Address
+				add                 //	st	heapLastAddr	
+
+				#increase heapSize by 1
+				ld	op2	const1	//	add
+				st	heapSize
+
+				#Load the value to be stored in Result
+				ld	op1	heapBuffer	//	ld	op2	const0	
+
+				#store the value at the address pointed-to by heapLastAddr
+				add					//	sti	heapLastAddr	
+
+				jump	1	#return
+
+	heapPop:	op1	heapSize	//	ld	op2	const1	#Decrease HeapSize by 1
+				sub				//	st	heapSize
+				op1	heapLastAddr	//	sub	#Decrease heapLastAddr by 1
+				st	heapLastAddr
+				jump	1	#return
+
+.end

@@ -1,0 +1,56 @@
+# This program performs the arithmetic power to the n function
+
+.beg
+
+#Define numeric constants. Size: 10
+    const0:  0
+    const1:  1
+    const2:  2
+    const3:  3
+    const4:  4
+    const5:  5
+    const6:  6
+    const7:  7
+    const8:  8
+    const9:  9
+
+#Define program variables
+    base:   0
+    exponent:   1
+    result: 0
+    subTotal:    0
+    
+.org 256
+    main:   call    switchExponent
+
+    switchExponent:  ld  op1 exponent    //  ld  op2 const0
+                    add                 
+                    be  caseExponent0
+                    ld op2 const1       //  add
+                    be  caseExponent1
+    				be  caseExponentAny
+
+    caseExponent0:    call exponentIs0
+                    ba returnSwitchExponent
+    caseExponent1:    call exponentIs1
+                    ba returnSwitchExponent
+    caseexponentAny:  call exponentIsAny
+    				ba returnSwitchExponent
+    returnSwitchExponent:   jump    1
+
+    exponentIs0:    ld	op1	const1	//	ld	op2	const0
+					add				//	st	result
+					jump	1
+	
+	exponentIs1:	ld	op1 base	//	ld	op2	const0
+					add				//	st	result
+					jump	1
+	
+	exponentIsAny:	ld op1 exponent //  ld  op2 const1
+
+# Would like to try implementing this program recursively
+# but for that I require a memory allocator subroutine
+                    
+
+            
+.end

@@ -1,0 +1,15 @@
+.beg
+	x:	32
+	y:	64
+	z:	128
+	a:	0
+	b:	0
+	c:	0
+
+	main:	ld	op1	x	//	ld	op2	y
+				add				//	st	a
+				ld	op1	z	//	ld	op2	a
+				sub				//	st	b
+				ld	op1	b	//	not	b
+				st	c
+.end
