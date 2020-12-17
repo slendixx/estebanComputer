@@ -30,8 +30,8 @@ execute at 0-2-0-0-0 if block ~ ~-1 ~ minecraft:gray_wool run execute at 0-2-0-2
 
 execute at 0-2-0-0-0 if block ~ ~-1 ~ minecraft:gray_wool run function ec0:alu/updatepsr
 
-execute at 0-2-0-0-0 if block ~ ~-1 ~ minecraft:gray_wool run function ec0:cu/ibr/testforibr
-
-execute at 0-2-0-0-0 as 0-2-0-0-0 if block ~ ~-1 ~ minecraft:gray_wool run tp @s 0-2-0-0-1
+execute at 0-2-0-0-0 if block ~ ~-1 ~ minecraft:gray_wool run function ec0:alu/updatepsr
 
 execute at 0-2-0-0-0 if block ~ ~-1 ~ minecraft:gray_wool run function ec0:alu/regmanipulation/clearcarry
+
+execute at 0-2-0-0-0 as 0-2-0-0-0 if block ~ ~-1 ~ minecraft:gray_wool run tp @s 0-2-0-0-1

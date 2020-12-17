@@ -6,7 +6,6 @@
 
 function assemble() {
   symbolTable = [];
-  constantsTable = [];
   programPointer = 0;
   currentSymbol = {};
   let machineCode;
@@ -17,7 +16,6 @@ function assemble() {
   //Once parsing is complete  i have a fully formed symbol table
   testForUndefinedSymbols(symbolTable);
   console.table(symbolTable);
-  console.table(constantsTable);
   // console.log(`Translation begin line: ${beginLine + 1}`);
   // console.log(`Translation end line: ${endLine + 1}`);
 
@@ -89,19 +87,16 @@ function determineParseCase(
     // console.log(`${line + 1}: ` + "\\s noArgInst");
     if (!isRightInstruction) {
       incCurrentSymbolSize(currentSymbol);
-      constantsTable.push(false);
     }
   } else if (tokens.length === 2 && isConst(tokens[1])) {
     // console.log(`${line + 1}: ` + "\\s const");
     if (symbolTable.length !== 0 && !isRightInstruction) {
       incCurrentSymbolSize(currentSymbol);
-      constantsTable.push(true);
     }
   } else if (tokens.length === 3 && !isOrg(tokens[0]) && isConst(tokens[1])) {
     // console.log(`${line + 1}: ` + "\\s const \\s");
     if (symbolTable.length !== 0 && !isRightInstruction) {
       incCurrentSymbolSize(currentSymbol);
-      constantsTable.push(true);
     }
   } else if (tokens.length === 3 && isLabel(tokens[1]) && isConst(tokens[2])) {
     // console.log(`${line + 1}: ` + "\\s label: const");
@@ -128,7 +123,6 @@ function determineParseCase(
         );
       }
     }
-    if (!isRightInstruction) constantsTable.push(true);
   } else if (tokens.length === 3 && isOrg(tokens[0]) && isConst(tokens[1])) {
     // console.log(`${line + 1}: ` + ".org arg \\s");
     programPointerIncAmount = Number(tokens[1]) - programPointer;
@@ -137,13 +131,11 @@ function determineParseCase(
     if (!isRightInstruction) {
       //console.log(line + " " + currentSymbol);
       incCurrentSymbolSize(currentSymbol);
-      constantsTable.push(false);
     }
   } else if (tokens.length === 3 && isSingleArgInstruction(tokens[1])) {
     // console.log(`${line + 1}: ` + "\\s singleArgInst arg");
     if (!isRightInstruction) {
       incCurrentSymbolSize(currentSymbol);
-      constantsTable.push(false);
     }
     if (!isConst(tokens[2])) {
       if (!isOnSymbolTable(tokens[2])) {
@@ -175,7 +167,6 @@ function determineParseCase(
       symbol.size = 1;
       symbol.address = programPointer;
     }
-    if (!isRightInstruction) constantsTable.push(false);
   } else if (
     tokens.length === 4 &&
     isLabel(tokens[1]) &&
@@ -196,7 +187,6 @@ function determineParseCase(
       symbol.size = 1;
       symbol.address = programPointer;
     }
-    if (!isRightInstruction) constantsTable.push(false);
   } else if (
     tokens.length === 4 &&
     isLabel(tokens[1]) &&
@@ -220,12 +210,10 @@ function determineParseCase(
       symbol.size = 1;
       symbol.address = programPointer;
     }
-    if (!isRightInstruction) constantsTable.push(true);
   } else if (tokens.length === 4 && isSingleArgInstruction(tokens[1])) {
     // console.log(`${line + 1}: ` + "\\s singleArgInst arg \\s");
     if (!isRightInstruction) {
       incCurrentSymbolSize(currentSymbol);
-      constantsTable.push(false);
     }
     if (!isConst(tokens[2])) {
       if (!isOnSymbolTable(tokens[2])) {
@@ -241,7 +229,6 @@ function determineParseCase(
     // console.log(`${line + 1}: ` + "\\s doubleArgInst arg1 arg2");
     if (!isRightInstruction) {
       incCurrentSymbolSize(currentSymbol);
-      constantsTable.push(false);
     }
     if (tokens[2] !== "op1" && tokens[2] !== "op2") {
       updateFeedback(
@@ -292,12 +279,10 @@ function determineParseCase(
       }
       //if the user referenced a symbol that is already on the table, do nothing
     }
-    if (!isRightInstruction) constantsTable.push(false);
   } else if (tokens.length === 5 && isDoubleArgInstruction(tokens[1])) {
     // console.log(`${line + 1}: ` + "\\s doubleArgInst arg1 arg2 \\s");
     if (!isRightInstruction) {
       incCurrentSymbolSize(currentSymbol);
-      constantsTable.push(false);
     }
     if (tokens[2] !== "op1" && tokens[2] !== "op2") {
       updateFeedback(
@@ -347,7 +332,6 @@ function determineParseCase(
       }
       //if the user referenced a symbol that is already on the table, do nothing
     }
-    if (!isRightInstruction) constantsTable.push(false);
   } else if (
     tokens.length === 5 &&
     isLabel(tokens[1]) &&
@@ -386,7 +370,6 @@ function determineParseCase(
       }
       //if the user referenced a symbol that is already on the table, do nothing
     }
-    if (!isRightInstruction) constantsTable.push(false);
   } else if (
     tokens.length === 6 &&
     isLabel(tokens[1]) &&
@@ -426,7 +409,6 @@ function determineParseCase(
       }
       //if the user referenced a symbol that is already on the table, do nothing
     }
-    if (!isRightInstruction) constantsTable.push(false);
   } else {
     updateFeedback(`Syntax error at line: ${line + 1}.`);
   }
@@ -563,6 +545,7 @@ function testForUndefinedSymbols(symbolTable) {
 function translate(source) {
   let tokens = [];
   let tokensRight = [];
+  constantsTable = [];
   let line = "";
   let right = "";
   programPointer = 0;
@@ -586,6 +569,7 @@ function translate(source) {
     }
   }
   // console.log(output.machineCode);
+  console.log(constantsTable);
   machine.value = output.machineCode;
   return output.machineCode;
 }
@@ -599,6 +583,7 @@ function determineTranslateCase(
 ) {
   let programPointerIncAmount = 1;
   let machineCodeLine = ``;
+  let lineIsConst = false;
   //if (line === 6) debugger;
   // console.log(
   //   `line: ${line}, tokens: ${tokens}, ${
@@ -633,18 +618,21 @@ function determineTranslateCase(
     if (!isRightInstruction) {
       machineCodeLine = translateConst(tokens[1]);
       output.machineCode += `${machineCodeLine}\n`;
+      lineIsConst = true;
     }
   } else if (tokens.length === 3 && !isOrg(tokens[0]) && isConst(tokens[1])) {
     // console.log(`${line + 1}: ` + "\\s const \\s");
     if (!isRightInstruction) {
       machineCodeLine = translateConst(tokens[1]);
       output.machineCode += `${machineCodeLine}\n`;
+      lineIsConst = true;
     }
   } else if (tokens.length === 3 && isLabel(tokens[1]) && isConst(tokens[2])) {
     // console.log(`${line + 1}: ` + "\\s label: const");
     if (!isRightInstruction) {
       machineCodeLine = translateConst(tokens[2]);
       output.machineCode += `${machineCodeLine}\n`;
+      lineIsConst = true;
     }
   } else if (tokens.length === 3 && isOrg(tokens[0]) && isConst(tokens[1])) {
     // console.log(`${line + 1}: ` + ".org arg \\s");
@@ -729,6 +717,7 @@ function determineTranslateCase(
     if (!isRightInstruction) {
       machineCodeLine = translateConst(tokens[2]);
       output.machineCode += `${machineCodeLine}\n`;
+      lineIsConst = true;
     }
   } else if (tokens.length === 4 && isSingleArgInstruction(tokens[1])) {
     // console.log(`${line + 1}: ` + "\\s singleArgInst arg \\s");
@@ -908,6 +897,9 @@ function determineTranslateCase(
     incProgramPointer(programPointerIncAmount, line);
   } else if (!rightInstruction && !isRightInstruction) {
     //If there's no instruction to the right, simply increase the program pointer.
+    if (lineIsConst) {
+      constantsTable.push(programPointer - 1);
+    }
     incProgramPointer(programPointerIncAmount, line);
   }
 }
@@ -1123,17 +1115,19 @@ function generateSetPC(value) {
   const digits = [...value];
   let resultCommand = "";
   let command = "";
-  for (let d = 0; d < digits.length; d++) {
+  let bitPosDif = 0;
+  for (let d = digits.length - 1; d >= 0; d--) {
     if (digits[d] === "0") {
       command = `setblock ${
-        PCPosX + d
+        PCPosX + bitPosDif
       } ${PCPosY} ${PCPosZ} minecraft:black_wool destroy\n`;
     } else {
       command = `setblock ${
-        PCPosX + d
+        PCPosX + bitPosDif
       } ${PCPosY} ${PCPosZ} minecraft:white_wool destroy\n`;
     }
     resultCommand += command;
+    bitPosDif++;
   }
   return resultCommand;
 }
@@ -1179,7 +1173,8 @@ function calcMemAddresPos(address) {
   const x = memPosX;
   const memModule = calcMemModule(address);
   const y = memPosY + memModule * blocksBetweenMemModule;
-  const z = memPosZ + address;
+  const z =
+    memPosZ + (address - memModuleAddressAmount * calcMemModule(address));
 
   return [x, y, z];
 }
@@ -1196,6 +1191,9 @@ function calcMemModule(address) {
 
 function binaryToSetblock(machineCode, programStartAddress, programEndAddress) {
   const [startX, startY, startZ] = calcMemAddresPos(programStartAddress);
+  console.log(
+    `programStartAddress ${programStartAddress}: ${startX} ${startY} ${startZ}`
+  );
   const [endX, endY, endZ] = calcMemAddresPos(programEndAddress);
   let result = "";
   let command = "";
@@ -1209,31 +1207,70 @@ function binaryToSetblock(machineCode, programStartAddress, programEndAddress) {
     line = line.match(/.{1,16}/g);
     left = line[0];
     right = line[1];
+
+    //This word is a number
+    if (constantsTable.includes(currentAddress)) {
+      let bits = [...right];
+      let bitPosDif = 0;
+      for (let b = right.length - 1; b >= 0; b--) {
+        if (bits[b] === "1") {
+          command = `setblock ${startX + bitPosDif} ${
+            startY + calcMemModule(currentAddress)
+          } ${
+            startZ + (currentAddress - 256 * calcMemModule(currentAddress))
+          } minecraft:white_wool destroy\n`;
+          result += command;
+        }
+        bitPosDif++;
+      }
+
+      bits = [...left];
+
+      for (let b = left.length - 1; b >= 0; b--) {
+        if (bits[b] === "1") {
+          command = `setblock ${startX + bitPosDif} ${
+            startY + calcMemModule(currentAddress)
+          } ${
+            startZ + (currentAddress - 256 * calcMemModule(currentAddress))
+          } minecraft:white_wool destroy\n`;
+          result += command;
+        }
+        bitPosDif++;
+      }
+      currentAddress++;
+    } else {
+      //This word is an instruction/s
+      let bits = [...left];
+      let bitPosDif = 0;
+      for (let b = left.length - 1; b >= 0; b--) {
+        if (bits[b] === "1") {
+          command = `setblock ${startX + bitPosDif} ${
+            startY + calcMemModule(currentAddress)
+          } ${
+            startZ + (currentAddress - 256 * calcMemModule(currentAddress))
+          } minecraft:white_wool destroy\n`;
+          result += command;
+        }
+        bitPosDif++;
+      }
+
+      bits = [...right];
+      for (let b = right.length - 1; b >= 0; b--) {
+        if (bits[b] === "1") {
+          command = `setblock ${startX + bitPosDif} ${
+            startY + calcMemModule(currentAddress)
+          } ${
+            startZ + (currentAddress - 256 * calcMemModule(currentAddress))
+          } minecraft:white_wool destroy\n`;
+          result += command;
+        }
+        bitPosDif++;
+      }
+
+      currentAddress++;
+    }
+
     //translate the lest-most part first
-    let bits = [...left];
-    let bitPosDif = 0;
-    for (let b = left.length - 1; b >= 0; b--) {
-      if (bits[b] === "1") {
-        command = `setblock ${startX + bitPosDif} ${
-          startY + calcMemModule(currentAddress)
-        } ${startZ + currentAddress} minecraft:white_wool destroy\n`;
-        result += command;
-      }
-      bitPosDif++;
-    }
-
-    bits = [...right];
-    for (let b = right.length - 1; b >= 0; b--) {
-      if (bits[b] === "1") {
-        command = `setblock ${startX + bitPosDif} ${
-          startY + calcMemModule(currentAddress)
-        } ${startZ + currentAddress} minecraft:white_wool destroy\n`;
-        result += command;
-      }
-      bitPosDif++;
-    }
-
-    currentAddress++;
   }
   return result;
 }
